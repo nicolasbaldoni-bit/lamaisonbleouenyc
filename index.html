@@ -304,7 +304,16 @@
     .beach-grid div { height: 220px; }
   }
 
-  /* SLIDESHOW */
+  /* CONTACT BUTTONS */
+  .contact-buttons { display: flex; flex-direction: column; align-items: center; gap: 1rem; margin: 2rem 0; }
+  .whatsapp-btn { display: inline-flex; align-items: center; gap: 0.7rem; font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 1rem 2.5rem; background: #25D366; color: #fff; text-decoration: none; transition: all 0.25s; border-radius: 2px; }
+  .whatsapp-btn:hover { background: #1ebe5d; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.3); }
+  .contact-or-divider { display: flex; align-items: center; gap: 1rem; width: 100%; max-width: 320px; color: var(--text-muted); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .contact-or-divider::before, .contact-or-divider::after { content: ''; flex: 1; height: 1px; background: var(--cream-dark); }
+  .email-copy-box { display: flex; align-items: center; gap: 0.8rem; padding: 0.8rem 1.2rem; background: var(--cream-warm); border: 1px solid var(--cream-dark); }
+  .email-address { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--navy); letter-spacing: 0.03em; }
+  .copy-btn { display: flex; align-items: center; gap: 0.4rem; background: none; border: 1px solid var(--gold); color: var(--gold); padding: 0.3rem 0.7rem; cursor: pointer; font-size: 0.65rem; font-family: 'Jost', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.2s; flex-shrink: 0; }
+  .copy-btn:hover { background: var(--gold); color: var(--navy-deep); }
   .room-card { position: relative; overflow: hidden; cursor: pointer; }
   .room-card .slides { position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; }
   .room-card .slide { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.7s ease; }
@@ -343,7 +352,7 @@
       <span id="lang-flag">🇫🇷</span>
       <span id="lang-label">Français</span>
     </button>
-    <a href="#contact" class="nav-cta email-trigger" data-en="Contact Chantal" data-fr="Contacter Chantal">Contact Chantal</a>
+    <a href="https://wa.me/13472558485" target="_blank" rel="noopener" class="nav-cta" data-en="Contact Chantal" data-fr="Contacter Chantal">Contact Chantal</a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -357,7 +366,7 @@
   <a href="#outdoors" data-en="Outdoors" data-fr="Extérieur">Outdoors</a>
   <a href="#ferry" data-en="The Ferry" data-fr="Le Ferry">The Ferry</a>
   <a href="#chantal" data-en="Your Host" data-fr="Votre Hôtesse">Your Host</a>
-  <a href="#contact" class="mobile-cta email-trigger" data-en="Contact Chantal" data-fr="Contacter Chantal">Contact Chantal</a>
+  <a href="https://wa.me/13472558485" target="_blank" rel="noopener" class="mobile-cta" data-en="Contact Chantal" data-fr="Contacter Chantal">Contact Chantal</a>
 </div>
 
 <!-- HERO -->
@@ -374,7 +383,7 @@
     <div class="hero-eyebrow" data-en="115 Corson Avenue · Staten Island, New York" data-fr="115 Corson Avenue · Staten Island, New York">115 Corson Avenue · Staten Island, New York</div>
     <h1 class="hero-title" data-en="New York<br>with a <em>backyard.</em>" data-fr="New York<br>avec un <em>jardin.</em>">New York<br>with a <em>backyard.</em></h1>
     <p class="hero-subtitle" data-en="A beautifully restored Victorian house on a hilltop — minutes from the free ferry, and a world away from the ordinary New York experience." data-fr="Une magnifique maison victorienne restaurée sur une colline — à quelques minutes du ferry gratuit, et à des années-lumière de l'expérience new-yorkaise ordinaire.">A beautifully restored Victorian house on a hilltop — minutes from the free ferry, and a world away from the ordinary New York experience.</p>
-    <a href="#contact" class="hero-cta email-trigger" data-en="Contact Chantal" data-fr="Contacter Chantal">Contact Chantal</a>
+    <a href="https://wa.me/13472558485" target="_blank" rel="noopener" class="hero-cta" data-en="Contact Chantal" data-fr="Contacter Chantal">Contact Chantal</a>
   </div>
   <div class="hero-scroll"><div class="hero-scroll-line"></div><span data-en="Scroll" data-fr="Défiler">Scroll</span></div>
 </section>
@@ -498,7 +507,7 @@
   </div>
   <div style="text-align:center;margin-top:3.5rem">
     <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--text-muted);font-style:italic;margin-bottom:1.5rem" data-en="Need more space? We can accommodate groups and families of any size." data-fr="Besoin de plus d'espace ? Nous accueillons les groupes et familles de toute taille.">Need more space? We can accommodate groups and families of any size.</p>
-    <a href="#contact" class="btn-primary email-trigger" data-en="Ask Chantal About Availability →" data-fr="Demander à Chantal les Disponibilités →">Ask Chantal About Availability →</a>
+    <a href="https://wa.me/13472558485" target="_blank" rel="noopener" class="btn-primary" data-en="Ask Chantal About Availability →" data-fr="Demander à Chantal les Disponibilités →">Ask Chantal About Availability →</a>
   </div>
 </section>
 
@@ -633,16 +642,35 @@
   <div class="contact-inner">
     <img class="contact-gate" src="Arriving at lamaisonbleuenyc (3).jpeg" alt="Bienvenue">
     <h2 class="contact-title" data-en="Dites bonjour." data-fr="Dites bonjour.">Dites bonjour.</h2>
-    <p class="contact-subtitle" data-en="Ready to visit New York differently? Have a question about the house, the rooms, or the neighbourhood? Chantal would love to hear from you. No booking system, no forms — just a friendly email." data-fr="Prêt à visiter New York autrement ? Une question sur la maison, les chambres ou le quartier ? Chantal sera ravie de vous répondre. Pas de système de réservation — juste un email amical.">Ready to visit New York differently? Have a question about the house, the rooms, or the neighbourhood? Chantal would love to hear from you. No booking system, no forms — just a friendly email.</p>
+    <p class="contact-subtitle" data-en="Ready to visit New York differently? Have a question about the house, the rooms, or the neighbourhood? Chantal would love to hear from you." data-fr="Prêt à visiter New York autrement ? Une question sur la maison, les chambres ou le quartier ? Chantal sera ravie de vous répondre.">Ready to visit New York differently? Have a question about the house, the rooms, or the neighbourhood? Chantal would love to hear from you.</p>
     <div class="contact-rules">
       <span data-en="✓ Any size group welcome" data-fr="✓ Tout groupe bienvenu">✓ Any size group welcome</span>
       <span data-en="✓ Flexible dates & check-in" data-fr="✓ Dates & arrivée flexibles">✓ Flexible dates & check-in</span>
       <span data-en="✓ Up to one month" data-fr="✓ Jusqu'à un mois">✓ Up to one month</span>
       <span data-en="✗ No smoking / vaping" data-fr="✗ Non fumeur / vapotage">✗ No smoking / vaping</span>
     </div>
-    <a href="#contact" class="contact-email-btn email-trigger" data-en="Write to Chantal" data-fr="Écrire à Chantal">Write to Chantal</a>
-    <p class="contact-or" data-en="or email directly" data-fr="ou par email directement">or email directly</p>
-    <p class="contact-email-text"><span id="email-display"></span></p>
+
+    <div class="contact-buttons">
+      <!-- WhatsApp -->
+      <a href="https://wa.me/13472558485" target="_blank" rel="noopener" class="whatsapp-btn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span data-en="WhatsApp Chantal" data-fr="WhatsApp Chantal">WhatsApp Chantal</span>
+      </a>
+
+      <div class="contact-or-divider">
+        <span data-en="or write to" data-fr="ou écrivez à">or write to</span>
+      </div>
+
+      <!-- Plain text email — no link, just text to copy -->
+      <div class="email-copy-box">
+        <span class="email-address">chantalinnyc@gmail.com</span>
+        <button class="copy-btn" id="copy-email" title="Copy email">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          <span id="copy-label" data-en="Copy" data-fr="Copier">Copy</span>
+        </button>
+      </div>
+    </div>
+
     <div class="divider" style="margin-top:3rem"><div class="divider-line"></div><div class="divider-ornament">✦</div><div class="divider-line"></div></div>
     <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--text-muted);margin-top:1.5rem;line-height:1.7">115 Corson Avenue, Staten Island, New York<br>Walking distance to the Staten Island Ferry Terminal</p>
   </div>
@@ -651,32 +679,26 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">La Maison Bleue NYC<span>Hôtel à Staten Island · New York</span></div>
-  <div class="footer-center">© 2025 La Maison Bleue NYC<br><span style="font-size:0.6rem;opacity:0.5">115 Corson Ave, Staten Island, New York · <span id="email-footer"></span></span></div>
+  <div class="footer-center">© 2025 La Maison Bleue NYC<br><span style="font-size:0.6rem;opacity:0.5">115 Corson Ave, Staten Island, New York · chantalinnyc@gmail.com</span></div>
   <div class="footer-right">🇫🇷 Bienvenue<br><span style="font-size:0.6rem;opacity:0.6">Français & English spoken</span></div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 window.addEventListener('DOMContentLoaded', function() {
 
-  // ── EMAIL — built at runtime so Cloudflare cannot intercept ──
-  var u = 'chantalinnyc';
-  var d = 'gmail.com';
-  var email = u + '@' + d;
-  var mailto = 'mailto:' + email;
-
-  // Set displayed email text
-  var disp = document.getElementById('email-display');
-  if (disp) disp.textContent = email;
-  var foot = document.getElementById('email-footer');
-  if (foot) foot.textContent = email;
-
-  // Wire up all email trigger buttons
-  document.querySelectorAll('.email-trigger').forEach(function(el) {
-    el.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.location.href = mailto;
+  // ── COPY EMAIL ──
+  var copyBtn = document.getElementById('copy-email');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function() {
+      navigator.clipboard.writeText('chantalinnyc@gmail.com').then(function() {
+        var label = document.getElementById('copy-label');
+        label.textContent = '✓ Copied!';
+        setTimeout(function() {
+          label.textContent = label.getAttribute('data-' + currentLang) || 'Copy';
+        }, 2000);
+      });
     });
-  });
+  }
   var hamburger = document.getElementById('hamburger');
   var mobileMenu = document.getElementById('mobile-menu');
 
