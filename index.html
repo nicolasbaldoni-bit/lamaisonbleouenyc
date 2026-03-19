@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Maison Bleue NYC — Hôtel à Staten Island</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1c2b4a; --navy-deep: #101e35; --navy-mid: #243558;
+    --cream: #f4efe4; --cream-warm: #ede5d5;
+    --gold: #c9a84c; --gold-light: #dfc07a; --gold-pale: #f0dca0;
+    --text-dark: #1a1814; --text-mid: #4a4438; --text-muted: #8a7f6e;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; align-items: center; justify-content: space-between; padding: 0 4rem; height: 220px; background: rgba(16,30,53,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,168,76,0.2); transition: all 0.3s ease; }
+  .nav-logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
+  .nav-logo img { height: 208px; width: 208px; border-radius: 50%; border: 2px solid rgba(201,168,76,0.6); object-fit: cover; }
+  .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--cream); line-height: 1.2; }
+  .nav-brand span { display: block; font-family: 'Jost', sans-serif; font-size: 0.58rem; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-light); margin-top: 3px; }
+  .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: rgba(244,239,228,0.7); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: color 0.25s; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 0.25s; }
+  .nav-links a:hover { color: var(--cream); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-right { display: flex; align-items: center; gap: 0.8rem; }
+  .nav-cta { font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.6rem 1.6rem; background: var(--gold); color: var(--navy-deep); text-decoration: none; transition: all 0.25s; display: inline-block; }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .lang-toggle { font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.6rem 1rem; background: transparent; color: rgba(244,239,228,0.7); border: 1px solid rgba(201,168,76,0.35); cursor: pointer; transition: all 0.25s; display: flex; align-items: center; gap: 0.4rem; }
+  .lang-toggle:hover { color: var(--cream); border-color: var(--gold); }
+
+  /* HERO */
+  .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: flex-end; overflow: hidden; margin-top: 220px; }
+  .hero-photos { position: absolute; inset: 0; display: grid; grid-template-columns: 1.3fr 0.7fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; }
+  .hero-photo { overflow: hidden; position: relative; }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.65); }
+  .hero-photo.main { grid-row: 1 / 3; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,22,48,0.92) 0%, rgba(10,22,48,0.35) 50%, rgba(10,22,48,0.05) 100%); z-index: 2; }
+  .hero-content { position: relative; z-index: 10; padding: 0 4rem 5rem; max-width: 800px; }
+  .hero-eyebrow { font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 1rem; animation: fadeUp 0.8s 0.1s both; }
+  .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 700; color: var(--white); line-height: 1.05; margin-bottom: 1rem; animation: fadeUp 0.8s 0.25s both; }
+  .hero-title em { font-style: italic; color: var(--gold-pale); }
+  .hero-subtitle { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 300; font-style: italic; color: rgba(244,239,228,0.8); margin-bottom: 2.5rem; line-height: 1.5; max-width: 520px; animation: fadeUp 0.8s 0.4s both; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 0.8rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; padding: 1rem 2.5rem; background: var(--gold); color: var(--navy-deep); text-decoration: none; transition: all 0.3s; animation: fadeUp 0.8s 0.55s both; }
+  .hero-cta:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.3); }
+  .hero-scroll { position: absolute; bottom: 2rem; right: 4rem; z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: rgba(244,239,228,0.5); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; }
+  .hero-scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, rgba(244,239,228,0.5), transparent); animation: scrollPulse 2s infinite; }
+  @keyframes scrollPulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+  /* SHARED */
+  .section-eyebrow { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem; }
+  .section-eyebrow::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 600; line-height: 1.15; color: var(--navy); margin-bottom: 1.5rem; }
+  .section-title.light { color: var(--cream); }
+  .section-body { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300; line-height: 1.8; color: var(--text-mid); max-width: 600px; }
+  .section-body.light { color: rgba(244,239,228,0.8); }
+  .btn-primary { display: inline-flex; align-items: center; gap: 0.6rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; padding: 1rem 2.5rem; background: var(--navy); color: var(--cream); text-decoration: none; transition: all 0.3s; }
+  .btn-primary:hover { background: var(--navy-mid); transform: translateY(-2px); }
+  .divider { display: flex; align-items: center; justify-content: center; gap: 1rem; padding: 1rem 0; }
+  .divider-line { flex:1; max-width: 100px; height: 1px; background: var(--gold); opacity: 0.3; }
+  .divider-ornament { color: var(--gold); font-size: 1rem; opacity: 0.6; }
+
+  /* ABOUT */
+  .about { padding: 8rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; background: var(--cream); }
+  .about-images { position: relative; height: 620px; }
+  .about-img-main { position: absolute; top: 0; left: 0; width: 72%; height: 80%; object-fit: cover; box-shadow: 20px 20px 60px rgba(28,43,74,0.15); }
+  .about-img-secondary { position: absolute; bottom: 0; right: 0; width: 55%; height: 55%; object-fit: cover; box-shadow: -10px 10px 40px rgba(28,43,74,0.12); border: 5px solid var(--cream); }
+  .about-gold-accent { position: absolute; top: -1.5rem; left: -1.5rem; width: 80px; height: 80px; border: 2px solid var(--gold); opacity: 0.4; }
+  .about-quote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; color: var(--navy); line-height: 1.4; margin: 2rem 0; padding-left: 1.5rem; border-left: 2px solid var(--gold); }
+
+  /* FEATURES */
+  .features { background: var(--navy); padding: 4rem; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .feature-item { padding: 2rem 2.5rem; border-right: 1px solid rgba(201,168,76,0.15); text-align: center; }
+  .feature-item:last-child { border-right: none; }
+  .feature-icon { font-size: 1.8rem; margin-bottom: 0.8rem; display: block; }
+  .feature-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--cream); margin-bottom: 0.4rem; }
+  .feature-desc { font-size: 0.75rem; font-weight: 300; letter-spacing: 0.05em; color: rgba(201,168,76,0.7); line-height: 1.5; }
+
+  /* ROOMS */
+  .rooms { padding: 8rem 4rem; background: var(--cream-warm); }
+  .rooms-header { text-align: center; margin-bottom: 5rem; }
+  .rooms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+  .rooms-grid-bottom { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3px; margin-top: 3px; }
+  .room-card { position: relative; overflow: hidden; cursor: pointer; }
+  .room-card.tall { aspect-ratio: 3/4; }
+  .room-card.wide { aspect-ratio: 16/9; }
+  .room-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
+  .room-card:hover img { transform: scale(1.05); }
+  .room-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,22,48,0.88) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; }
+  .room-floor { font-size: 0.6rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .room-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; color: var(--white); margin-bottom: 0.4rem; line-height: 1.2; }
+  .room-desc { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-style: italic; color: rgba(244,239,228,0.75); line-height: 1.4; }
+
+  /* OUTDOORS */
+  .outdoors { background: var(--navy-deep); padding: 8rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .outdoors-images { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px; height: 580px; }
+  .outdoors-img { overflow: hidden; }
+  .outdoors-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .outdoors-img:hover img { transform: scale(1.06); }
+  .outdoors-img.span-col { grid-column: span 2; }
+  .outdoors-amenities { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 2.5rem; }
+  .amenity { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; font-weight: 300; letter-spacing: 0.04em; color: rgba(201,168,76,0.8); }
+  .amenity::before { content: '—'; color: var(--gold); }
+
+  /* FERRY */
+  .ferry { padding: 8rem 4rem; background: var(--cream); }
+  .ferry-inner { display: grid; grid-template-columns: 1fr 1.1fr; gap: 6rem; align-items: center; }
+  .big-stat { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 700; color: var(--navy); line-height: 1; margin: 1.5rem 0 0.4rem; }
+  .big-stat span { font-size: 1.4rem; color: var(--gold); font-style: italic; }
+  .stat-label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+  .ferry-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .ferry-photo { overflow: hidden; }
+  .ferry-photo img { width: 100%; height: 240px; object-fit: cover; transition: transform 0.5s; display: block; }
+  .ferry-photo:hover img { transform: scale(1.06); }
+  .ferry-photo.tall img { height: 484px; }
+  .ferry-sights { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem; }
+  .ferry-sight { display: flex; gap: 1rem; padding: 0.8rem 1rem; background: var(--cream-warm); border-left: 2px solid var(--gold); }
+  .ferry-sight-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.2rem; }
+  .ferry-sight-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* CHANTAL */
+  .chantal { background: var(--navy); padding: 8rem 4rem; display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; align-items: center; }
+  .chantal-image-wrap { position: relative; }
+  .chantal-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
+  .chantal-frame { position: absolute; top: -1.5rem; right: -1.5rem; bottom: 1.5rem; left: 1.5rem; border: 1.5px solid rgba(201,168,76,0.3); pointer-events: none; }
+  .chantal-languages { display: flex; gap: 0.6rem; margin-top: 1.5rem; }
+  .lang-badge { padding: 0.3rem 0.8rem; border: 1px solid rgba(201,168,76,0.4); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); }
+  .chantal-quote { margin-top: 2.5rem; padding: 1.5rem 2rem; border-left: 2px solid var(--gold); }
+  .chantal-quote p { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--gold-pale); line-height: 1.5; }
+  .chantal-quote cite { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-top: 0.8rem; font-style: normal; }
+
+  /* TESTIMONIALS */
+  .testimonials { padding: 8rem 4rem; background: var(--cream-warm); }
+  .testimonials-header { text-align: center; margin-bottom: 4rem; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .testimonial { background: var(--white); padding: 2.5rem; position: relative; box-shadow: 0 4px 30px rgba(28,43,74,0.06); }
+  .testimonial::before { content: '\201C'; font-family: 'Playfair Display', serif; font-size: 6rem; line-height: 0; color: var(--gold-pale); position: absolute; top: 2.5rem; left: 2rem; opacity: 0.5; }
+  .testimonial-text { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; font-style: italic; line-height: 1.7; color: var(--text-mid); margin-bottom: 1.5rem; padding-top: 1.5rem; position: relative; z-index: 1; }
+  .testimonial-author { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); }
+  .testimonial-origin { font-size: 0.68rem; color: var(--gold); margin-top: 0.2rem; }
+
+  /* NEIGHBORHOOD */
+  .neighborhood { background: var(--navy-deep); padding: 7rem 4rem; }
+  .neighborhood-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: center; }
+  .neighborhood-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; height: 500px; }
+  .neighborhood-photo { overflow: hidden; }
+  .neighborhood-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
+  .neighborhood-photo:hover img { transform: scale(1.06); }
+  .neighborhood-photo.tall { grid-row: span 2; }
+  .neighborhood-list { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .neighborhood-list li { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 300; color: rgba(244,239,228,0.7); padding: 0.6rem 0; border-bottom: 1px solid rgba(201,168,76,0.1); display: flex; align-items: center; gap: 0.8rem; }
+  .neighborhood-list li::before { content: '→'; color: var(--gold); font-size: 0.8rem; flex-shrink: 0; }
+
+  /* CONTACT */
+  .contact { padding: 8rem 4rem; background: var(--cream); text-align: center; }
+  .contact-inner { max-width: 650px; margin: 0 auto; }
+  .contact-gate { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin: 0 auto 2.5rem; display: block; border: 3px solid var(--gold); box-shadow: 0 8px 40px rgba(28,43,74,0.15); }
+  .contact-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; font-style: italic; color: var(--navy); margin-bottom: 1rem; }
+  .contact-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 300; color: var(--text-mid); line-height: 1.7; margin-bottom: 1.5rem; }
+  .contact-rules { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 2.5rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+  .contact-email-btn { display: inline-flex; align-items: center; gap: 0.8rem; font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; padding: 1.2rem 3rem; background: var(--navy); color: var(--cream); text-decoration: none; transition: all 0.3s; }
+  .contact-email-btn:hover { background: var(--navy-mid); transform: translateY(-2px); }
+  .contact-or { margin: 1.5rem 0 0.5rem; font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .contact-email-text { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold); letter-spacing: 0.05em; }
+
+  /* FOOTER */
+  footer { background: var(--navy-deep); padding: 3rem 4rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(201,168,76,0.15); }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--cream); }
+  .footer-brand span { display: block; font-family: 'Jost', sans-serif; font-size: 0.6rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-top: 2px; }
+  .footer-center { font-size: 0.7rem; color: rgba(244,239,228,0.4); letter-spacing: 0.06em; text-align: center; line-height: 1.7; }
+  .footer-right { font-size: 0.7rem; color: var(--gold-light); letter-spacing: 0.06em; text-align: right; line-height: 1.7; }
+
+  /* ── TABLET ── */
+  @media (max-width: 1024px) {
+    nav { padding: 0 1.5rem; height: 76px; }
+    .nav-logo img { height: 60px; width: 60px; }
+    .nav-links { display: none; }
+    .hero { margin-top: 76px; }
+    .about, .outdoors, .chantal, .neighborhood { padding: 5rem 2rem; }
+    .ferry { padding: 5rem 2rem; }
+    .rooms, .testimonials, .contact { padding: 5rem 2rem; }
+    .about, .outdoors, .ferry-inner, .chantal, .neighborhood-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .features { grid-template-columns: 1fr 1fr; padding: 2rem; }
+    .hero-content { padding: 0 2rem 4rem; }
+    .rooms-grid { grid-template-columns: 1fr 1fr; }
+    .rooms-grid-bottom { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
+    .about-images { height: 400px; }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    /* NAV */
+    nav { padding: 0 1.2rem; height: 64px; }
+    .nav-logo img { height: 48px; width: 48px; }
+    .nav-brand { font-size: 0.85rem; }
+    .nav-brand span { font-size: 0.5rem; }
+    .nav-right { gap: 0.5rem; }
+    .lang-toggle { padding: 0.4rem 0.6rem; font-size: 0.6rem; }
+    .nav-cta { padding: 0.45rem 0.9rem; font-size: 0.6rem; letter-spacing: 0.1em; }
+
+    /* HAMBURGER MENU */
+    .hamburger { display: flex; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 1001; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--cream); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: var(--navy-deep); z-index: 1000; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 600; color: var(--cream); text-decoration: none; letter-spacing: 0.02em; }
+    .mobile-menu a:active { color: var(--gold); }
+    .mobile-menu .mobile-cta { font-family: 'Jost', sans-serif; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 1rem 2.5rem; background: var(--gold); color: var(--navy-deep); margin-top: 1rem; }
+
+    /* HERO */
+    .hero { margin-top: 64px; height: 90vh; min-height: 500px; }
+    .hero-photos { grid-template-columns: 1fr; grid-template-rows: 1fr; }
+    .hero-photo { display: none; }
+    .hero-photo.main { display: block; grid-row: 1; }
+    .hero-content { padding: 0 1.5rem 3rem; }
+    .hero-title { font-size: 2.6rem; line-height: 1.1; }
+    .hero-subtitle { font-size: 1.05rem; }
+    .hero-cta { padding: 0.9rem 2rem; font-size: 0.68rem; }
+    .hero-scroll { display: none; }
+
+    /* ABOUT */
+    .about { padding: 3.5rem 1.5rem; grid-template-columns: 1fr; gap: 2rem; }
+    .about-images { height: 280px; }
+    .about-img-main { width: 80%; height: 85%; }
+    .about-img-secondary { width: 55%; height: 50%; }
+    .about-quote { font-size: 1.15rem; }
+    .section-title { font-size: 1.8rem; }
+    .section-body { font-size: 1.05rem; }
+
+    /* FEATURES */
+    .features { grid-template-columns: 1fr 1fr; padding: 1.5rem 1rem; gap: 0; }
+    .feature-item { padding: 1.2rem 1rem; border-right: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); }
+    .feature-item:nth-child(2) { border-right: none; }
+    .feature-item:nth-child(3) { border-bottom: none; }
+    .feature-item:nth-child(4) { border-right: none; border-bottom: none; }
+    .feature-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .feature-title { font-size: 0.85rem; }
+    .feature-desc { font-size: 0.68rem; }
+
+    /* ROOMS */
+    .rooms { padding: 3.5rem 1.2rem; }
+    .rooms-grid { grid-template-columns: 1fr; gap: 3px; }
+    .rooms-grid-bottom { grid-template-columns: 1fr; gap: 3px; }
+    .room-card.tall { aspect-ratio: 4/3; }
+    .room-card.wide { aspect-ratio: 4/3; }
+    .room-name { font-size: 1.2rem; }
+    .room-desc { font-size: 0.85rem; }
+    .slide-btn { opacity: 1; width: 32px; height: 32px; font-size: 1.2rem; }
+
+    /* OUTDOORS */
+    .outdoors { padding: 3.5rem 1.5rem; grid-template-columns: 1fr; gap: 2rem; }
+    .outdoors-images { grid-template-columns: 1fr 1fr; height: 320px; }
+    .outdoors-amenities { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .amenity { font-size: 0.75rem; }
+
+    /* FERRY */
+    .ferry { padding: 3.5rem 1.5rem; }
+    .ferry-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .big-stat { font-size: 3.5rem; }
+    .ferry-photos { grid-template-columns: 1fr 1fr; }
+    .ferry-photo img { height: 160px; }
+    .ferry-photo.tall img { height: 324px; }
+
+    /* CHANTAL */
+    .chantal { padding: 3.5rem 1.5rem; grid-template-columns: 1fr; gap: 2rem; }
+    .chantal-img { aspect-ratio: 1; }
+
+    /* TESTIMONIALS */
+    .testimonials { padding: 3.5rem 1.5rem; }
+    .testimonials-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .testimonial { padding: 2rem 1.5rem; }
+    .testimonial-text { font-size: 1rem; }
+
+    /* NEIGHBORHOOD */
+    .neighborhood { padding: 3.5rem 1.5rem; }
+    .neighborhood-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .neighborhood-photos { grid-template-columns: 1fr 1fr; height: 280px; }
+    .neighborhood-photo.tall { grid-row: span 2; }
+
+    /* CONTACT */
+    .contact { padding: 3.5rem 1.5rem; }
+    .contact-gate { width: 140px; height: 140px; }
+    .contact-title { font-size: 2rem; }
+    .contact-rules { gap: 0.8rem; font-size: 0.65rem; flex-direction: column; align-items: center; }
+    .contact-email-btn { padding: 1rem 2rem; font-size: 0.7rem; }
+
+    /* FOOTER */
+    footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+
+    /* BEACH */
+    .beach-grid { grid-template-columns: 1fr !important; height: auto !important; }
+    .beach-grid div { height: 220px; }
+  }
+
+  /* SLIDESHOW */
+  .room-card { position: relative; overflow: hidden; cursor: pointer; }
+  .room-card .slides { position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; }
+  .room-card .slide { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.7s ease; }
+  .room-card .slide.active { opacity: 1 !important; }
+  .room-card { opacity: 1 !important; transform: none !important; }
+  .slide-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; background: rgba(10,22,48,0.6); color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 1.5rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; opacity: 0; }
+  .room-card:hover .slide-btn { opacity: 1; }
+  .slide-btn:hover { background: rgba(201,168,76,0.9); }
+  .slide-btn.prev { left: 0.7rem; }
+  .slide-btn.next { right: 0.7rem; }
+  .slide-dots { position: absolute; bottom: 5.5rem; left: 50%; transform: translateX(-50%); z-index: 20; display: flex; gap: 6px; }
+  .slide-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: background 0.2s; border: none; padding: 0; }
+  .slide-dot.active { background: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#top" class="nav-logo">
+    <img src="La Maison Bleue Logo.png" alt="La Maison Bleue NYC logo">
+    <div class="nav-brand">
+      La Maison Bleue NYC
+      <span>Hôtel à Staten Island</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about" data-en="The House" data-fr="La Maison">The House</a></li>
+    <li><a href="#rooms" data-en="Rooms" data-fr="Chambres">Rooms</a></li>
+    <li><a href="#outdoors" data-en="Outdoors" data-fr="Extérieur">Outdoors</a></li>
+    <li><a href="#ferry" data-en="The Ferry" data-fr="Le Ferry">The Ferry</a></li>
+    <li><a href="#chantal" data-en="Your Host" data-fr="Votre Hôtesse">Your Host</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-toggle" id="lang-btn">
+      <span id="lang-flag">🇫🇷</span>
+      <span id="lang-label">Français</span>
+    </button>
+    <a href="/cdn-cgi/l/email-protection#3e5d565f504a5f52575050475d7e59535f5752105d5153" class="nav-cta" data-en="Contact Chantal" data-fr="Contacter Chantal">Contact Chantal</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" data-en="The House" data-fr="La Maison">The House</a>
+  <a href="#rooms" data-en="Rooms" data-fr="Chambres">Rooms</a>
+  <a href="#outdoors" data-en="Outdoors" data-fr="Extérieur">Outdoors</a>
+  <a href="#ferry" data-en="The Ferry" data-fr="Le Ferry">The Ferry</a>
+  <a href="#chantal" data-en="Your Host" data-fr="Votre Hôtesse">Your Host</a>
+  <a href="mailto:chantalinnyc@gmail.com" class="mobile-cta" data-en="Contact Chantal" data-fr="Contacter Chantal">Contact Chantal</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-photos">
+    <div class="hero-photo main"><img src="Backyard (2).jpeg" alt="La Maison Bleue backyard"></div>
+    <div class="hero-photo"><img src="Sightseeing (1).jpeg" alt="Statue of Liberty"></div>
+    <div class="hero-photo"><img src="Arriving at lamaisonbleuenyc (3).jpeg" alt="Bienvenue gate"></div>
+    <div class="hero-photo"><img src="1rst floor room 1 with balcony, room 2 with fire place (4).jpeg" alt="Fireplace Room"></div>
+    <div class="hero-photo"><img src="2nd floor kitchen and deck behind it (3).jpeg" alt="Sunny deck"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow" data-en="115 Corson Avenue · Staten Island, New York" data-fr="115 Corson Avenue · Staten Island, New York">115 Corson Avenue · Staten Island, New York</div>
+    <h1 class="hero-title" data-en="New York<br>with a <em>backyard.</em>" data-fr="New York<br>avec un <em>jardin.</em>">New York<br>with a <em>backyard.</em></h1>
+    <p class="hero-subtitle" data-en="A beautifully restored Victorian house on a hilltop — minutes from the free ferry, and a world away from the ordinary New York experience." data-fr="Une magnifique maison victorienne restaurée sur une colline — à quelques minutes du ferry gratuit, et à des années-lumière de l'expérience new-yorkaise ordinaire.">A beautifully restored Victorian house on a hilltop — minutes from the free ferry, and a world away from the ordinary New York experience.</p>
+    <a href="/cdn-cgi/l/email-protection#7a19121b140e1b1613141403193a1d171b131654191517" class="hero-cta" data-en="Contact Chantal" data-fr="Contacter Chantal">Contact Chantal</a>
+  </div>
+  <div class="hero-scroll"><div class="hero-scroll-line"></div><span data-en="Scroll" data-fr="Défiler">Scroll</span></div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-images">
+    <div class="about-gold-accent"></div>
+    <img class="about-img-main" src="Arriving at lamaisonbleuenyc (1).PNG" alt="La Maison Bleue exterior">
+    <img class="about-img-secondary" src="Arriving at lamaisonbleuenyc (3).jpeg" alt="Bienvenue gate">
+  </div>
+  <div>
+    <div class="section-eyebrow" data-en="The House" data-fr="La Maison">The House</div>
+    <h2 class="section-title" data-en="A Victorian home<br>in a historic district" data-fr="Une maison victorienne<br>dans un quartier historique">A Victorian home<br>in a historic district</h2>
+    <blockquote class="about-quote" data-en='"Somewhere between a dear friend\'s beautiful home and the best-kept secret in New York City."' data-fr='"Entre la belle maison d\'un ami cher et le secret le mieux gardé de New York."'>"Somewhere between a dear friend's beautiful home and the best-kept secret in New York City."</blockquote>
+    <p class="section-body" data-en="Built in the late 1800s and lovingly restored, La Maison Bleue sits quietly on a tree-lined hill in one of Staten Island's most beautiful historic districts. High ceilings. Period architectural details. Large, airy rooms that are warm in winter and cool in summer — because being on top of a hill surrounded by old-growth trees has its advantages." data-fr="Construite à la fin des années 1800 et restaurée avec amour, La Maison Bleue se dresse paisiblement sur une colline arborée, dans l'un des plus beaux quartiers historiques de Staten Island. Hauts plafonds. Détails architecturaux d'époque. Grandes chambres lumineuses, chaudes en hiver et fraîches en été.">Built in the late 1800s and lovingly restored, La Maison Bleue sits quietly on a tree-lined hill in one of Staten Island's most beautiful historic districts. High ceilings. Period architectural details. Large, airy rooms that are warm in winter and cool in summer — because being on top of a hill surrounded by old-growth trees has its advantages.</p>
+    <br>
+    <p class="section-body" data-en="This is not a hotel. It is a home — and you are invited to live in it fully. Cook in the kitchen, sit in the garden, sway in the hammock. Stay a night or stay a month. Arrive whenever you like." data-fr="Ce n'est pas un hôtel. C'est une maison — et vous êtes invités à y vivre pleinement. Cuisinez, profitez du jardin, oscillez dans le hamac. Restez une nuit ou un mois. Arrivez quand vous le souhaitez.">This is not a hotel. It is a home — and you are invited to live in it fully. Cook in the kitchen, sit in the garden, sway in the hammock. Stay a night or stay a month. Arrive whenever you like.</p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<div class="features">
+  <div class="feature-item"><span class="feature-icon">🕐</span><div class="feature-title" data-en="Arrive Anytime" data-fr="Arrivée à Toute Heure">Arrive Anytime</div><div class="feature-desc" data-en="Flexible check-in & out.<br>No rigid schedules, ever." data-fr="Arrivée & départ flexibles.<br>Aucun horaire imposé.">Flexible check-in & out.<br>No rigid schedules, ever.</div></div>
+  <div class="feature-item"><span class="feature-icon">🏡</span><div class="feature-title" data-en="Everyone Welcome" data-fr="Tout le Monde Bienvenu">Everyone Welcome</div><div class="feature-desc" data-en="Solo, couples, families,<br>groups of any size." data-fr="Seul, en couple, en famille,<br>en groupe — peu importe.">Solo, couples, families,<br>groups of any size.</div></div>
+  <div class="feature-item"><span class="feature-icon">📅</span><div class="feature-title" data-en="One Night to One Month" data-fr="Une Nuit à Un Mois">One Night to One Month</div><div class="feature-desc" data-en="Short stays, extended stays.<br>We adapt to you." data-fr="Courts séjours, longs séjours.<br>Nous nous adaptons à vous.">Short stays, extended stays.<br>We adapt to you.</div></div>
+  <div class="feature-item"><span class="feature-icon">🌿</span><div class="feature-title" data-en="Fresh Hilltop Air" data-fr="Air Pur de Colline">Fresh Hilltop Air</div><div class="feature-desc" data-en="No smoking. No vaping.<br>Just clean, quiet air." data-fr="Non fumeur. Non vapotage.<br>Juste de l'air pur et calme.">No smoking. No vaping.<br>Just clean, quiet air.</div></div>
+</div>
+
+<!-- ROOMS -->
+<section class="rooms" id="rooms">
+  <div class="rooms-header">
+    <div class="section-eyebrow" style="justify-content:center" data-en="Accommodations" data-fr="Hébergements">Accommodations</div>
+    <h2 class="section-title" style="text-align:center" data-en="Every room<br>tells a story" data-fr="Chaque chambre<br>raconte une histoire">Every room<br>tells a story</h2>
+    <p class="section-body" style="margin:0 auto;text-align:center" data-en="Six distinct spaces across three floors. Each one unique, curated and entirely yours." data-fr="Six espaces distincts sur trois étages. Chacun unique, soigné et entièrement vôtre.">Six distinct spaces across three floors. Each one unique, curated and entirely yours.</p>
+  </div>
+  <div class="rooms-grid">
+    <!-- THE FIREPLACE ROOM — 5 images -->
+    <div class="room-card tall slideshow" data-index="0">
+      <div class="slides">
+        <img src="1rst floor room 1 with balcony, room 2 with fire place (4).jpeg" alt="The Fireplace Room" class="slide active">
+        <img src="1rst floor room 1 with balcony, room 2 with fire place (3).jpeg" alt="The Fireplace Room 2" class="slide">
+        <img src="1rst floor room 1 with balcony, room 2 with fire place (5).jpeg" alt="The Fireplace Room 3" class="slide">
+      </div>
+      <button class="slide-btn prev">&#8249;</button>
+      <button class="slide-btn next">&#8250;</button>
+      <div class="slide-dots"></div>
+      <div class="room-card-overlay">
+        <div class="room-floor" data-en="1st Floor · Room 2" data-fr="1er Étage · Chambre 2">1st Floor · Room 2</div>
+        <div class="room-name" data-en="The Fireplace Room" data-fr="La Chambre à Cheminée">The Fireplace Room</div>
+        <div class="room-desc" data-en="Antique fireplace, hardwood floors, Persian rug & vintage writing desk" data-fr="Cheminée ancienne, parquet, tapis persan et bureau vintage">Antique fireplace, hardwood floors, Persian rug & vintage writing desk</div>
+      </div>
+    </div>
+
+    <!-- THE YELLOW ROOM — 2 images -->
+    <div class="room-card tall slideshow" data-index="0">
+      <div class="slides">
+        <img src="1rst floor room 1 with balcony, room 2 with fire place (2).jpeg" alt="The Yellow Room" class="slide active">
+        <img src="1rst floor room 1 with balcony, room 2 with fire place (1).jpeg" alt="The Yellow Room 2" class="slide">
+      </div>
+      <button class="slide-btn prev">&#8249;</button>
+      <button class="slide-btn next">&#8250;</button>
+      <div class="slide-dots"></div>
+      <div class="room-card-overlay">
+        <div class="room-floor" data-en="1st Floor · Room 1" data-fr="1er Étage · Chambre 1">1st Floor · Room 1</div>
+        <div class="room-name" data-en="The Yellow Room" data-fr="La Chambre Jaune">The Yellow Room</div>
+        <div class="room-desc" data-en="Iron bed frame, reading nook by the window & balcony access" data-fr="Lit en fer forgé, coin lecture et accès au balcon">Iron bed frame, reading nook by the window & balcony access</div>
+      </div>
+    </div>
+
+    <!-- THE BLUE ROOM — 2 images -->
+    <div class="room-card tall slideshow" data-index="0">
+      <div class="slides">
+        <img src="2nd floor - Room  4 (2).jpeg" alt="The Blue Room" class="slide active">
+        <img src="2nd floor - Room 4 (1).jpeg" alt="The Blue Room 2" class="slide">
+      </div>
+      <button class="slide-btn prev">&#8249;</button>
+      <button class="slide-btn next">&#8250;</button>
+      <div class="slide-dots"></div>
+      <div class="room-card-overlay">
+        <div class="room-floor" data-en="2nd Floor · Room 4" data-fr="2ème Étage · Chambre 4">2nd Floor · Room 4</div>
+        <div class="room-name" data-en="The Blue Room" data-fr="La Chambre Bleue">The Blue Room</div>
+        <div class="room-desc" data-en="Deep navy walls, king bed, world map art & warm brass lamps" data-fr="Murs bleu marine, grand lit king, carte du monde et lampes en laiton">Deep navy walls, king bed, world map art & warm brass lamps</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rooms-grid-bottom">
+    <!-- THE MANHATTAN ROOM — 3 images -->
+    <div class="room-card wide slideshow" data-index="0">
+      <div class="slides">
+        <img src="Up to the 3rd floor  double room with view of Manhattan and bathroom (1).jpeg" alt="The Manhattan Room" class="slide active">
+        <img src="Up to the 3rd floor  double room with view of Manhattan and bathroom (2).jpeg" alt="The Manhattan Room 2" class="slide">
+        <img src="Up to the 3rd floor  double room with view of Manhattan and bathroom (3).jpeg" alt="The Manhattan Room 3" class="slide">
+      </div>
+      <button class="slide-btn prev">&#8249;</button>
+      <button class="slide-btn next">&#8250;</button>
+      <div class="slide-dots"></div>
+      <div class="room-card-overlay">
+        <div class="room-floor" data-en="3rd Floor · Premium Room" data-fr="3ème Étage · Chambre Premium">3rd Floor · Premium Room</div>
+        <div class="room-name" data-en="The Manhattan Room" data-fr="La Chambre Manhattan">The Manhattan Room</div>
+        <div class="room-desc" data-en="Wake up to the New York skyline. King bed, sitting area, Moroccan-tiled bathroom. One World Trade visible from your window." data-fr="Réveillez-vous face à la skyline de New York. Grand lit king, coin salon, salle de bain marocaine. Le One World Trade depuis votre fenêtre.">Wake up to the New York skyline. King bed, sitting area, Moroccan-tiled bathroom. One World Trade visible from your window.</div>
+      </div>
+    </div>
+
+    <!-- THE GARDEN APARTMENT — 2 images -->
+    <div class="room-card wide slideshow" data-index="0">
+      <div class="slides">
+        <img src="Rez de chaussée living room.jpeg" alt="The Garden Apartment" class="slide active">
+        <img src="Rez de chaussée independent 2br apt.jpeg" alt="The Garden Apartment 2" class="slide">
+      </div>
+      <button class="slide-btn prev">&#8249;</button>
+      <button class="slide-btn next">&#8250;</button>
+      <div class="slide-dots"></div>
+      <div class="room-card-overlay">
+        <div class="room-floor" data-en="Ground Floor · Independent" data-fr="Rez-de-Chaussée · Indépendant">Ground Floor · Independent</div>
+        <div class="room-name" data-en="The Garden Apartment" data-fr="L'Appartement Jardin">The Garden Apartment</div>
+        <div class="room-desc" data-en="Full 2-bedroom apartment with private kitchen, living room & direct garden access." data-fr="Appartement 2 chambres avec cuisine privée, salon et accès direct au jardin.">Full 2-bedroom apartment with private kitchen, living room & direct garden access.</div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:3.5rem">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--text-muted);font-style:italic;margin-bottom:1.5rem" data-en="Need more space? We can accommodate groups and families of any size." data-fr="Besoin de plus d'espace ? Nous accueillons les groupes et familles de toute taille.">Need more space? We can accommodate groups and families of any size.</p>
+    <a href="/cdn-cgi/l/email-protection#5a39323b342e3b3633343423391a3d373b333674393537" class="btn-primary" data-en="Ask Chantal About Availability →" data-fr="Demander à Chantal les Disponibilités →">Ask Chantal About Availability →</a>
+  </div>
+</section>
+
+<!-- OUTDOORS -->
+<section class="outdoors" id="outdoors">
+  <div class="outdoors-images">
+    <div class="outdoors-img span-col"><img src="Backyard (1).jpeg" alt="Backyard with hammock"></div>
+    <div class="outdoors-img"><img src="2nd floor kitchen and deck behind it (4).jpeg" alt="Sunny deck"></div>
+    <div class="outdoors-img"><img src="Arriving at lamaisonbleuenyc (2).jpeg" alt="Hydrangeas"></div>
+  </div>
+  <div>
+    <div class="section-eyebrow" data-en="Outdoor Living" data-fr="Vie en Plein Air">Outdoor Living</div>
+    <h2 class="section-title light" data-en="Step outside.<br>You are still home." data-fr="Sortez.<br>Vous êtes encore chez vous.">Step outside.<br>You are still home.</h2>
+    <p class="section-body light" data-en="In New York City, outdoor space is a luxury. At La Maison Bleue, it is simply part of the house. The garden, the deck, the hammock — all waiting for you." data-fr="À New York, l'espace extérieur est un luxe. À La Maison Bleue, c'est simplement une extension de la maison. Le jardin, la terrasse, le hamac — tout vous attend.">In New York City, outdoor space is a luxury. At La Maison Bleue, it is simply part of the house. The garden, the deck, the hammock — all waiting for you.</p>
+    <div class="outdoors-amenities">
+      <div class="amenity" data-en="Large grassy backyard" data-fr="Grand jardin avec pelouse">Large grassy backyard</div>
+      <div class="amenity" data-en="Sunny 2nd-floor deck" data-fr="Terrasse ensoleillée au 2ème">Sunny 2nd-floor deck</div>
+      <div class="amenity" data-en="Hammocks" data-fr="Hamacs">Hammocks</div>
+      <div class="amenity" data-en="BBQ & outdoor dining" data-fr="Barbecue & repas en plein air">BBQ & outdoor dining</div>
+      <div class="amenity" data-en="Garden umbrellas" data-fr="Parasols de jardin">Garden umbrellas</div>
+      <div class="amenity" data-en="Hibiscus garden" data-fr="Jardin d'hibiscus">Hibiscus garden</div>
+      <div class="amenity" data-en="Purple hydrangeas" data-fr="Hortensias violets">Purple hydrangeas</div>
+      <div class="amenity" data-en="Tent area available" data-fr="Espace tente disponible">Tent area available</div>
+      <div class="amenity" data-en="Multiple seating areas" data-fr="Plusieurs espaces détente">Multiple seating areas</div>
+      <div class="amenity" data-en="Quiet & private" data-fr="Calme et privé">Quiet & private</div>
+      <div class="amenity" data-en="Full kitchen access" data-fr="Accès cuisine complète">Full kitchen access</div>
+      <div class="amenity" data-en="Treetop hilltop setting" data-fr="Cadre arboré sur colline">Treetop hilltop setting</div>
+    </div>
+  </div>
+</section>
+
+<!-- FERRY -->
+<section class="ferry" id="ferry">
+  <div class="ferry-inner">
+    <div>
+      <div class="section-eyebrow" data-en="The Secret Weapon" data-fr="L'Arme Secrète">The Secret Weapon</div>
+      <h2 class="section-title" data-en="The best free thing<br>in New York City" data-fr="La meilleure chose gratuite<br>à New York">The best free thing<br>in New York City</h2>
+      <div class="big-stat">$0 <span data-en="always free" data-fr="toujours gratuit">always free</span></div>
+      <div class="stat-label" data-en="Staten Island Ferry · Runs 24 hours · 365 days a year" data-fr="Ferry de Staten Island · 24h/24 · 365 jours par an">Staten Island Ferry · Runs 24 hours · 365 days a year</div>
+      <p class="section-body" data-en="Most visitors pay handsomely for a 'Statue of Liberty cruise.' Our guests simply walk to the end of the street, step onto the iconic orange ferry, and sail past Lady Liberty, the Manhattan skyline, and the Verrazzano Bridge — completely free, day or night." data-fr="La plupart des visiteurs paient cher pour une 'croisière Statue de la Liberté.' Nos hôtes marchent simplement jusqu'au bout de la rue et longent la Statue de la Liberté, la skyline de Manhattan et le pont Verrazzano — gratuitement, de jour comme de nuit.">Most visitors pay handsomely for a "Statue of Liberty cruise." Our guests simply walk to the end of the street, step onto the iconic orange ferry, and sail past Lady Liberty, the Manhattan skyline, and the Verrazzano Bridge — completely free, day or night.</p>
+      <div class="ferry-sights">
+        <div class="ferry-sight"><div><div class="ferry-sight-title" data-en="🗽 Statue of Liberty" data-fr="🗽 Statue de la Liberté">🗽 Statue of Liberty</div><div class="ferry-sight-desc" data-en="Sail right past her. No tour boat, no ticket, no booking required." data-fr="Passez juste à côté. Pas de billet, pas de réservation.">Sail right past her. No tour boat, no ticket, no booking required.</div></div></div>
+        <div class="ferry-sight"><div><div class="ferry-sight-title" data-en="🌆 Manhattan Skyline" data-fr="🌆 Skyline de Manhattan">🌆 Manhattan Skyline</div><div class="ferry-sight-desc" data-en="One World Trade at sunrise. The city glittering at night. Free, every time." data-fr="Le One World Trade au lever du soleil. La ville scintillante la nuit. Gratuit.">One World Trade at sunrise. The city glittering at night. Free, every time.</div></div></div>
+        <div class="ferry-sight"><div><div class="ferry-sight-title" data-en="🌉 Verrazzano Bridge" data-fr="🌉 Pont Verrazzano">🌉 Verrazzano Bridge</div><div class="ferry-sight-desc" data-en="One of the most beautiful suspension bridges in the world — right from the deck." data-fr="L'un des plus beaux ponts suspendus du monde — visible depuis le ferry.">One of the most beautiful suspension bridges in the world — right from the deck.</div></div></div>
+        <div class="ferry-sight"><div><div class="ferry-sight-title" data-en="🏖️ South Beach" data-fr="🏖️ South Beach">🏖️ South Beach</div><div class="ferry-sight-desc" data-en="A real sandy beach with a boardwalk, right here on Staten Island." data-fr="Une vraie plage de sable avec promenade, ici même à Staten Island.">A real sandy beach with a boardwalk, right here on Staten Island.</div></div></div>
+      </div>
+    </div>
+    <div class="ferry-photos">
+      <div class="ferry-photo tall"><img src="Getting there - Ferry (1).jpeg" alt="Staten Island Ferry"></div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <div class="ferry-photo"><img src="Sightseeing (1).jpeg" alt="Statue of Liberty"></div>
+        <div class="ferry-photo"><img src="Sightseeing (3).jpeg" alt="Manhattan skyline"></div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:5rem">
+    <div class="divider"><div class="divider-line"></div><div class="divider-ornament">✦</div><div class="divider-line"></div></div>
+    <p style="text-align:center;font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--text-muted);margin:2rem 0" data-en="And when you want sand between your toes..." data-fr="Et quand vous voulez du sable entre les orteils...">And when you want sand between your toes...</p>
+    <div class="beach-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4px;height:320px">
+      <div style="overflow:hidden"><img src="Staten Island - South Beach (1).jpeg" alt="South Beach" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div style="overflow:hidden"><img src="Staten Island - South Beach (2).jpeg" alt="South Beach boardwalk" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+    </div>
+    <p style="text-align:center;font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--text-muted);margin-top:1.2rem">South Beach, Staten Island — a real boardwalk, a real beach, in New York City.</p>
+  </div>
+</section>
+
+<!-- CHANTAL -->
+<section class="chantal" id="chantal">
+  <div class="chantal-image-wrap">
+    <img class="chantal-img" src="Arriving at lamaisonbleuenyc (3).jpeg" alt="Bienvenue — Chantal's gate">
+    <div class="chantal-frame"></div>
+    <div class="chantal-languages">
+      <div class="lang-badge">🇫🇷 Français</div>
+      <div class="lang-badge">🇺🇸 English</div>
+    </div>
+  </div>
+  <div>
+    <div class="section-eyebrow" data-en="Your Host" data-fr="Votre Hôtesse">Your Host</div>
+    <h2 class="section-title light" data-en="Meet Chantal" data-fr="Rencontrez Chantal">Meet Chantal</h2>
+    <p class="section-body light" data-en="Chantal was born in France, but New York claimed her long ago. She'll probably be the best part of your stay — whether that's a restaurant tucked away in a neighbourhood no guidebook mentions, a conversation about literature over morning coffee, or simply knowing that someone who genuinely loves this city is looking out for you." data-fr="Chantal est née en France, mais New York l'a adoptée depuis longtemps. Elle sera probablement la meilleure partie de votre séjour — que ce soit pour dénicher un restaurant caché, une conversation sur la littérature autour d'un café matinal, ou simplement savoir que quelqu'un qui aime vraiment cette ville veille sur vous.">Chantal was born in France, but New York claimed her long ago. She'll probably be the best part of your stay — whether that's a restaurant tucked away in a neighbourhood no guidebook mentions, a conversation about literature over morning coffee, or simply knowing that someone who genuinely loves this city is looking out for you.</p>
+    <br>
+    <p class="section-body light" data-en="She speaks French, English, and fluent New Yorker. She has explored every corner of this extraordinary city and cannot wait to share it. Ask her anything." data-fr="Elle parle français, anglais et new-yorkais couramment. Elle a exploré chaque recoin de cette ville et ne demande qu'à la partager. Posez-lui toutes vos questions.">She speaks French, English, and fluent New Yorker. She has explored every corner of this extraordinary city and cannot wait to share it. Ask her anything.</p>
+    <div class="chantal-quote">
+      <p data-en='"I love travelling and I love New York. Having guests from around the world means a little of both — every single day."' data-fr='"J\'aime voyager et j\'aime New York. Accueillir des visiteurs du monde entier, c\'est un peu des deux — chaque jour."'>"I love travelling and I love New York. Having guests from around the world means a little of both — every single day."</p>
+      <cite>— Chantal</cite>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-header">
+    <div class="section-eyebrow" style="justify-content:center" data-en="Guest Words" data-fr="Avis de Nos Hôtes">Guest Words</div>
+    <h2 class="section-title" style="text-align:center" data-en="What people say" data-fr="Ce que disent nos hôtes">What people say</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial"><p class="testimonial-text">"Chantal is the kind of host you hope for but rarely find. Her knowledge of New York is extraordinary — she pointed us to places we never would have discovered on our own. An unforgettable stay."</p><div class="testimonial-author">James & Sarah T.</div><div class="testimonial-origin">London 🇬🇧</div></div>
+    <div class="testimonial"><p class="testimonial-text">"Spotlessly clean, incredibly comfortable, and so convenient. We felt completely at home from the moment we arrived. La Maison Bleue is everything a hotel isn't — and everything you actually want."</p><div class="testimonial-author">Marco R.</div><div class="testimonial-origin">Milan 🇮🇹</div></div>
+    <div class="testimonial"><p class="testimonial-text">"Chantal, c'est de la famille. Depuis notre premier séjour, on a une nouvelle tante à New York. On reviendra, c'est certain — on ne pourrait pas imaginer visiter la ville autrement."</p><div class="testimonial-author">Sophie & Luc M.</div><div class="testimonial-origin">Paris 🇫🇷</div></div>
+  </div>
+</section>
+
+<!-- NEIGHBORHOOD -->
+<section class="neighborhood">
+  <div class="neighborhood-inner">
+    <div class="neighborhood-photos">
+      <div class="neighborhood-photo tall"><img src="Hibiscus Garden.jpeg" alt="Hibiscus garden"></div>
+      <div class="neighborhood-photo"><img src="Staten Island - South Beach (2).jpeg" alt="South Beach boardwalk"></div>
+      <div class="neighborhood-photo"><img src="Getting there - Ferry (2).jpeg" alt="NYC ferry with Manhattan skyline"></div>
+    </div>
+    <div>
+      <div class="section-eyebrow" data-en="The Neighborhood" data-fr="Le Quartier">The Neighborhood</div>
+      <h2 class="section-title light" data-en="Everything you need.<br>Nothing you don't." data-fr="Tout ce qu'il vous faut.<br>Rien de superflu.">Everything you need.<br>Nothing you don't.</h2>
+      <p class="section-body light" data-en="The house sits in a quiet, beautiful historic district — but quiet doesn't mean isolated. Daily life and adventure are both within easy walking distance." data-fr="La maison se trouve dans un beau quartier historique et calme — mais calme ne signifie pas isolé. La vie quotidienne et l'aventure sont toutes deux à portée de marche.">The house sits in a quiet, beautiful historic district — but quiet doesn't mean isolated. Daily life and adventure are both within easy walking distance.</p>
+      <ul class="neighborhood-list">
+        <li data-en="Free 24/7 Staten Island Ferry — minutes on foot" data-fr="Ferry gratuit 24h/24 — à quelques minutes à pied">Free 24/7 Staten Island Ferry — minutes on foot</li>
+        <li data-en="Manhattan in 25 minutes, no subway needed" data-fr="Manhattan en 25 minutes, sans métro">Manhattan in 25 minutes, no subway needed</li>
+        <li data-en="Great restaurants, cafés & bars nearby" data-fr="Excellents restaurants, cafés et bars à proximité">Great restaurants, cafés & bars nearby</li>
+        <li data-en="Fresh bakeries & local markets" data-fr="Boulangeries fraîches et marchés locaux">Fresh bakeries & local markets</li>
+        <li data-en="Supermarkets within walking distance" data-fr="Supermarchés à distance de marche">Supermarkets within walking distance</li>
+        <li data-en="Outlet mall minutes away" data-fr="Centre outlet à quelques minutes">Outlet mall minutes away</li>
+        <li data-en="Beautiful parks & walking trails" data-fr="Beaux parcs et sentiers de promenade">Beautiful parks & walking trails</li>
+        <li data-en="South Beach & boardwalk" data-fr="South Beach et promenade">South Beach & boardwalk</li>
+        <li data-en="Historic St. George district" data-fr="Quartier historique de St. George">Historic St. George district</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <img class="contact-gate" src="Arriving at lamaisonbleuenyc (3).jpeg" alt="Bienvenue">
+    <h2 class="contact-title" data-en="Dites bonjour." data-fr="Dites bonjour.">Dites bonjour.</h2>
+    <p class="contact-subtitle" data-en="Ready to visit New York differently? Have a question about the house, the rooms, or the neighbourhood? Chantal would love to hear from you. No booking system, no forms — just a friendly email." data-fr="Prêt à visiter New York autrement ? Une question sur la maison, les chambres ou le quartier ? Chantal sera ravie de vous répondre. Pas de système de réservation — juste un email amical.">Ready to visit New York differently? Have a question about the house, the rooms, or the neighbourhood? Chantal would love to hear from you. No booking system, no forms — just a friendly email.</p>
+    <div class="contact-rules">
+      <span data-en="✓ Any size group welcome" data-fr="✓ Tout groupe bienvenu">✓ Any size group welcome</span>
+      <span data-en="✓ Flexible dates & check-in" data-fr="✓ Dates & arrivée flexibles">✓ Flexible dates & check-in</span>
+      <span data-en="✓ Up to one month" data-fr="✓ Jusqu'à un mois">✓ Up to one month</span>
+      <span data-en="✗ No smoking / vaping" data-fr="✗ Non fumeur / vapotage">✗ No smoking / vaping</span>
+    </div>
+    <a href="/cdn-cgi/l/email-protection#fb98939a958f9a979295958298bb9c969a9297d5989496" class="contact-email-btn" data-en="Write to Chantal" data-fr="Écrire à Chantal">Write to Chantal</a>
+    <p class="contact-or" data-en="or email directly" data-fr="ou par email directement">or email directly</p>
+    <p class="contact-email-text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3b58535a554f5a5752555542587b5c565a525715585456">[email&#160;protected]</a></p>
+    <div class="divider" style="margin-top:3rem"><div class="divider-line"></div><div class="divider-ornament">✦</div><div class="divider-line"></div></div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--text-muted);margin-top:1.5rem;line-height:1.7">115 Corson Avenue, Staten Island, New York<br>Walking distance to the Staten Island Ferry Terminal</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">La Maison Bleue NYC<span>Hôtel à Staten Island · New York</span></div>
+  <div class="footer-center">© 2025 La Maison Bleue NYC<br><span style="font-size:0.6rem;opacity:0.5">115 Corson Ave, Staten Island, New York · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="92f1faf3fce6f3fefbfcfcebf1d2f5fff3fbfebcf1fdff">[email&#160;protected]</a></span></div>
+  <div class="footer-right">🇫🇷 Bienvenue<br><span style="font-size:0.6rem;opacity:0.6">Français & English spoken</span></div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+window.addEventListener('DOMContentLoaded', function() {
+
+  // ── HAMBURGER MENU ──
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobile-menu');
+
+  // Show hamburger only on mobile
+  function checkMobile() {
+    if (window.innerWidth <= 640) {
+      hamburger.style.display = 'flex';
+    } else {
+      hamburger.style.display = 'none';
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+    }
+  }
+  checkMobile();
+  window.addEventListener('resize', checkMobile);
+
+  if (hamburger) {
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+  }
+
+  // Close mobile menu when a link is clicked
+  document.querySelectorAll('.mobile-menu a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  // ── TOUCH SWIPE FOR SLIDESHOWS ──
+  document.querySelectorAll('.room-card.slideshow').forEach(function(card) {
+    var touchStartX = 0;
+    var touchEndX = 0;
+    card.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    card.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      var diff = touchStartX - touchEndX;
+      var slides = card.querySelectorAll('.slide');
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) {
+          goToSlide(card, (card._cur + 1) % slides.length);
+        } else {
+          goToSlide(card, (card._cur - 1 + slides.length) % slides.length);
+        }
+      }
+    }, { passive: true });
+  });
+  var currentLang = 'en';
+  var langBtn = document.getElementById('lang-btn');
+  if (langBtn) {
+    langBtn.addEventListener('click', function() {
+      currentLang = currentLang === 'en' ? 'fr' : 'en';
+      document.getElementById('lang-flag').textContent = currentLang === 'fr' ? '🇬🇧' : '🇫🇷';
+      document.getElementById('lang-label').textContent = currentLang === 'fr' ? 'English' : 'Français';
+      document.querySelectorAll('[data-en][data-fr]').forEach(function(el) {
+        el.innerHTML = currentLang === 'fr' ? el.getAttribute('data-fr') : el.getAttribute('data-en');
+      });
+      document.documentElement.lang = currentLang;
+    });
+  }
+
+  // ── NAV SCROLL ──
+  var nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', function() {
+    nav.style.background = window.scrollY > 80 ? 'rgba(8,16,32,0.99)' : 'rgba(16,30,53,0.97)';
+  });
+
+  // ── SMOOTH SCROLL ──
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var href = this.getAttribute('href');
+      if (href === '#') return;
+      e.preventDefault();
+      var t = document.querySelector(href);
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // ── SLIDESHOW ──
+  function goToSlide(card, index) {
+    card.querySelectorAll('.slide').forEach(function(s) { s.classList.remove('active'); });
+    card.querySelectorAll('.slide-dot').forEach(function(d) { d.classList.remove('active'); });
+    var slides = card.querySelectorAll('.slide');
+    var dots = card.querySelectorAll('.slide-dot');
+    if (slides[index]) slides[index].classList.add('active');
+    if (dots[index]) dots[index].classList.add('active');
+    card._cur = index;
+  }
+
+  document.querySelectorAll('.room-card.slideshow').forEach(function(card) {
+    var slides = card.querySelectorAll('.slide');
+    if (slides.length <= 1) return;
+    card._cur = 0;
+
+    // Build dots
+    var dotsWrap = card.querySelector('.slide-dots');
+    if (dotsWrap) {
+      slides.forEach(function(_, i) {
+        var dot = document.createElement('button');
+        dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+        (function(idx) {
+          dot.addEventListener('click', function(e) { e.stopPropagation(); goToSlide(card, idx); });
+        })(i);
+        dotsWrap.appendChild(dot);
+      });
+    }
+
+    // Prev
+    var prev = card.querySelector('.slide-btn.prev');
+    if (prev) prev.addEventListener('click', function(e) {
+      e.stopPropagation();
+      goToSlide(card, (card._cur - 1 + slides.length) % slides.length);
+    });
+
+    // Next
+    var next = card.querySelector('.slide-btn.next');
+    if (next) next.addEventListener('click', function(e) {
+      e.stopPropagation();
+      goToSlide(card, (card._cur + 1) % slides.length);
+    });
+
+    // Auto-advance
+    setInterval(function() {
+      goToSlide(card, (card._cur + 1) % slides.length);
+    }, 4000);
+  });
+
+  // ── FADE IN ON SCROLL ──
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.testimonial, .feature-item, .ferry-sight, .amenity').forEach(function(el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
+    io.observe(el);
+  });
+
+});
+</script>
+</body>
+</html>
