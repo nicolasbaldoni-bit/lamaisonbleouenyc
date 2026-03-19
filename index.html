@@ -352,7 +352,7 @@
       <span id="lang-flag">🇫🇷</span>
       <span id="lang-label">Français</span>
     </button>
-    <a href="https://wa.me/13472558485" target="_blank" rel="noopener" class="nav-cta" data-en="Contact Chantal" data-fr="Contacter Chantal">Contact Chantal</a>
+    <a href="#contact" class="nav-cta" data-en="Contact Chantal" data-fr="Contacter Chantal">Contact Chantal</a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -366,7 +366,7 @@
   <a href="#outdoors" data-en="Outdoors" data-fr="Extérieur">Outdoors</a>
   <a href="#ferry" data-en="The Ferry" data-fr="Le Ferry">The Ferry</a>
   <a href="#chantal" data-en="Your Host" data-fr="Votre Hôtesse">Your Host</a>
-  <a href="https://wa.me/13472558485" target="_blank" rel="noopener" class="mobile-cta" data-en="Contact Chantal" data-fr="Contacter Chantal">Contact Chantal</a>
+  <a href="#contact" class="mobile-cta" data-en="Contact Chantal" data-fr="Contacter Chantal">Contact Chantal</a>
 </div>
 
 <!-- HERO -->
@@ -663,7 +663,7 @@
 
       <!-- Plain text email — no link, just text to copy -->
       <div class="email-copy-box">
-        <span class="email-address">chantalinnyc@gmail.com</span>
+        <span class="email-address"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="117279707f65707d787f7f687251767c70787d3f727e7c">[email&#160;protected]</a></span>
         <button class="copy-btn" id="copy-email" title="Copy email">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           <span id="copy-label" data-en="Copy" data-fr="Copier">Copy</span>
@@ -679,11 +679,11 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">La Maison Bleue NYC<span>Hôtel à Staten Island · New York</span></div>
-  <div class="footer-center">© 2025 La Maison Bleue NYC<br><span style="font-size:0.6rem;opacity:0.5">115 Corson Ave, Staten Island, New York · chantalinnyc@gmail.com</span></div>
+  <div class="footer-center">© 2025 La Maison Bleue NYC<br><span style="font-size:0.6rem;opacity:0.5">115 Corson Ave, Staten Island, New York · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f4979c959a8095989d9a9a8d97b49399959d98da979b99">[email&#160;protected]</a></span></div>
   <div class="footer-right">🇫🇷 Bienvenue<br><span style="font-size:0.6rem;opacity:0.6">Français & English spoken</span></div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 window.addEventListener('DOMContentLoaded', function() {
 
   // ── COPY EMAIL ──
@@ -836,19 +836,4 @@ window.addEventListener('DOMContentLoaded', function() {
       if (entry.isIntersecting) {
         entry.target.style.opacity = '1';
         entry.target.style.transform = 'translateY(0)';
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.testimonial, .feature-item, .ferry-sight, .amenity').forEach(function(el) {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
-    io.observe(el);
-  });
-
-});
-</script>
-</body>
-</html>
+        io.unobserve(entry.
