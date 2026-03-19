@@ -199,8 +199,8 @@
   /* ── MOBILE ── */
   @media (max-width: 640px) {
     /* NAV */
-    nav { padding: 0 1.2rem; height: 64px; }
-    .nav-logo img { height: 48px; width: 48px; }
+    nav { padding: 0 1.2rem; height: 154px; }
+    .nav-logo img { height: 144px; width: 144px; }
     .nav-brand { font-size: 0.85rem; }
     .nav-brand span { font-size: 0.5rem; }
     .nav-right { gap: 0.5rem; }
@@ -213,14 +213,14 @@
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: var(--navy-deep); z-index: 1000; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+    .mobile-menu { display: none; position: fixed; top: 154px; left: 0; right: 0; bottom: 0; background: var(--navy-deep); z-index: 1000; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
     .mobile-menu.open { display: flex; }
     .mobile-menu a { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 600; color: var(--cream); text-decoration: none; letter-spacing: 0.02em; }
     .mobile-menu a:active { color: var(--gold); }
     .mobile-menu .mobile-cta { font-family: 'Jost', sans-serif; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 1rem 2.5rem; background: var(--gold); color: var(--navy-deep); margin-top: 1rem; }
 
     /* HERO */
-    .hero { margin-top: 64px; height: 90vh; min-height: 500px; }
+    .hero { margin-top: 154px; height: 90vh; min-height: 500px; }
     .hero-photos { grid-template-columns: 1fr; grid-template-rows: 1fr; }
     .hero-photo { display: none; }
     .hero-photo.main { display: block; grid-row: 1; }
@@ -383,7 +383,7 @@
     <div class="hero-eyebrow" data-en="115 Corson Avenue · Staten Island, New York" data-fr="115 Corson Avenue · Staten Island, New York">115 Corson Avenue · Staten Island, New York</div>
     <h1 class="hero-title" data-en="New York<br>with a <em>backyard.</em>" data-fr="New York<br>avec un <em>jardin.</em>">New York<br>with a <em>backyard.</em></h1>
     <p class="hero-subtitle" data-en="A beautifully restored Victorian house on a hilltop — minutes from the free ferry, and a world away from the ordinary New York experience." data-fr="Une magnifique maison victorienne restaurée sur une colline — à quelques minutes du ferry gratuit, et à des années-lumière de l'expérience new-yorkaise ordinaire.">A beautifully restored Victorian house on a hilltop — minutes from the free ferry, and a world away from the ordinary New York experience.</p>
-    <a href="https://wa.me/13472558485" target="_blank" rel="noopener" class="hero-cta" data-en="Contact Chantal" data-fr="Contacter Chantal">Contact Chantal</a>
+    <a href="#contact" class="hero-cta" data-en="Contact Chantal" data-fr="Contacter Chantal">Contact Chantal</a>
   </div>
   <div class="hero-scroll"><div class="hero-scroll-line"></div><span data-en="Scroll" data-fr="Défiler">Scroll</span></div>
 </section>
@@ -507,7 +507,7 @@
   </div>
   <div style="text-align:center;margin-top:3.5rem">
     <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--text-muted);font-style:italic;margin-bottom:1.5rem" data-en="Need more space? We can accommodate groups and families of any size." data-fr="Besoin de plus d'espace ? Nous accueillons les groupes et familles de toute taille.">Need more space? We can accommodate groups and families of any size.</p>
-    <a href="https://wa.me/13472558485" target="_blank" rel="noopener" class="btn-primary" data-en="Ask Chantal About Availability →" data-fr="Demander à Chantal les Disponibilités →">Ask Chantal About Availability →</a>
+    <a href="#contact" class="btn-primary" data-en="Ask Chantal About Availability →" data-fr="Demander à Chantal les Disponibilités →">Ask Chantal About Availability →</a>
   </div>
 </section>
 
@@ -663,7 +663,7 @@
 
       <!-- Plain text email — no link, just text to copy -->
       <div class="email-copy-box">
-        <span class="email-address"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="117279707f65707d787f7f687251767c70787d3f727e7c">[email&#160;protected]</a></span>
+        <span class="email-address" id="email-display"></span>
         <button class="copy-btn" id="copy-email" title="Copy email">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           <span id="copy-label" data-en="Copy" data-fr="Copier">Copy</span>
@@ -679,22 +679,31 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">La Maison Bleue NYC<span>Hôtel à Staten Island · New York</span></div>
-  <div class="footer-center">© 2025 La Maison Bleue NYC<br><span style="font-size:0.6rem;opacity:0.5">115 Corson Ave, Staten Island, New York · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f4979c959a8095989d9a9a8d97b49399959d98da979b99">[email&#160;protected]</a></span></div>
+  <div class="footer-center">© 2025 La Maison Bleue NYC<br><span style="font-size:0.6rem;opacity:0.5">115 Corson Ave, Staten Island, New York · <span id="footer-email"></span></span></div>
   <div class="footer-right">🇫🇷 Bienvenue<br><span style="font-size:0.6rem;opacity:0.6">Français & English spoken</span></div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false">
 window.addEventListener('DOMContentLoaded', function() {
 
-  // ── COPY EMAIL ──
+  // ── EMAIL DISPLAY & COPY ──
+  // Build email in JS so Cloudflare never sees it in HTML
+  var em = ['chantalinnyc', 'gmail.com'].join('@');
+  var emailDisplay = document.getElementById('email-display');
+  if (emailDisplay) emailDisplay.textContent = em;
+  var footerEmail = document.getElementById('footer-email');
+  if (footerEmail) footerEmail.textContent = em;
+
   var copyBtn = document.getElementById('copy-email');
   if (copyBtn) {
     copyBtn.addEventListener('click', function() {
-      navigator.clipboard.writeText('chantalinnyc@gmail.com').then(function() {
+      navigator.clipboard.writeText(em).then(function() {
         var label = document.getElementById('copy-label');
         label.textContent = '✓ Copied!';
         setTimeout(function() {
-          label.textContent = label.getAttribute('data-' + currentLang) || 'Copy';
+          label.setAttribute('data-en', 'Copy');
+          label.setAttribute('data-fr', 'Copier');
+          label.textContent = currentLang === 'fr' ? 'Copier' : 'Copy';
         }, 2000);
       });
     });
@@ -836,4 +845,19 @@ window.addEventListener('DOMContentLoaded', function() {
       if (entry.isIntersecting) {
         entry.target.style.opacity = '1';
         entry.target.style.transform = 'translateY(0)';
-        io.unobserve(entry.
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.testimonial, .feature-item, .ferry-sight, .amenity').forEach(function(el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
+    io.observe(el);
+  });
+
+});
+</script>
+</body>
+</html>
