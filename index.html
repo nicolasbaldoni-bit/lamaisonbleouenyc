@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>La Maison Bleue NYC — Hôtel à Staten Island</title>
+<title>La Maison Bleue NYC — Guesthouse à Staten Island</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -18,9 +18,13 @@
   body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
 
   /* NAV */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; align-items: center; justify-content: space-between; padding: 0 4rem; height: 220px; background: rgba(16,30,53,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,168,76,0.2); transition: all 0.3s ease; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; align-items: center; justify-content: space-between; padding: 0 4rem; height: 76px; background: rgba(16,30,53,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,168,76,0.2); transition: all 0.3s ease; }
   .nav-logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
   .nav-logo img { height: 208px; width: 208px; border-radius: 50%; border: 2px solid rgba(201,168,76,0.6); object-fit: cover; }
+  .text-logo { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; }
+  .text-logo-main { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--cream); letter-spacing: 0.08em; text-transform: uppercase; }
+  .text-logo-main span { color: var(--gold); }
+  .text-logo-sub { font-family: 'Jost', sans-serif; font-size: 0.55rem; font-weight: 400; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold-light); margin-top: 4px; width: 100%; text-align: center; }
   .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--cream); line-height: 1.2; }
   .nav-brand span { display: block; font-family: 'Jost', sans-serif; font-size: 0.58rem; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-light); margin-top: 3px; }
   .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
@@ -35,7 +39,7 @@
   .lang-toggle:hover { color: var(--cream); border-color: var(--gold); }
 
   /* HERO */
-  .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: flex-end; overflow: hidden; margin-top: 220px; }
+  .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: flex-end; overflow: hidden; margin-top: 76px; }
   .hero-photos { position: absolute; inset: 0; display: grid; grid-template-columns: 1.3fr 0.7fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; }
   .hero-photo { overflow: hidden; position: relative; }
   .hero-photo img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.65); }
@@ -179,8 +183,8 @@
 
   /* ── TABLET ── */
   @media (max-width: 1024px) {
-    nav { padding: 0 1.5rem; height: 76px; }
-    .nav-logo img { height: 60px; width: 60px; }
+    nav { padding: 0 1.5rem; height: 70px; }
+    .text-logo-main { font-size: 1.3rem; }
     .nav-links { display: none; }
     .hero { margin-top: 76px; }
     .about, .outdoors, .chantal, .neighborhood { padding: 5rem 2rem; }
@@ -199,8 +203,8 @@
   /* ── MOBILE ── */
   @media (max-width: 640px) {
     /* NAV */
-    nav { padding: 0 1.2rem; height: 154px; }
-    .nav-logo img { height: 144px; width: 144px; }
+    nav { padding: 0 1.2rem; height: 64px; }
+    .text-logo-main { font-size: 1rem; } .text-logo-sub { font-size: 0.45rem; }
     .nav-brand { font-size: 0.85rem; }
     .nav-brand span { font-size: 0.5rem; }
     .nav-right { gap: 0.5rem; }
@@ -213,14 +217,14 @@
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu { display: none; position: fixed; top: 154px; left: 0; right: 0; bottom: 0; background: var(--navy-deep); z-index: 1000; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+    .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: var(--navy-deep); z-index: 1000; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
     .mobile-menu.open { display: flex; }
     .mobile-menu a { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 600; color: var(--cream); text-decoration: none; letter-spacing: 0.02em; }
     .mobile-menu a:active { color: var(--gold); }
     .mobile-menu .mobile-cta { font-family: 'Jost', sans-serif; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 1rem 2.5rem; background: var(--gold); color: var(--navy-deep); margin-top: 1rem; }
 
     /* HERO */
-    .hero { margin-top: 154px; height: 90vh; min-height: 500px; }
+    .hero { margin-top: 64px; height: 90vh; min-height: 500px; }
     .hero-photos { grid-template-columns: 1fr; grid-template-rows: 1fr; }
     .hero-photo { display: none; }
     .hero-photo.main { display: block; grid-row: 1; }
@@ -334,15 +338,16 @@
 <!-- NAV -->
 <nav id="main-nav">
   <a href="#top" class="nav-logo">
-    <img src="La Maison Bleue Logo.png" alt="La Maison Bleue NYC logo">
-    <div class="nav-brand">
-      La Maison Bleue NYC
-      <span>Hôtel à Staten Island</span>
+    <div class="text-logo">
+      <div class="text-logo-main">LA MAISON BLEUE</div>
+      <div class="text-logo-sub">NYC · GUESTHOUSE</div>
     </div>
   </a>
   <ul class="nav-links">
     <li><a href="#about" data-en="The House" data-fr="La Maison">The House</a></li>
     <li><a href="#rooms" data-en="Rooms" data-fr="Chambres">Rooms</a></li>
+    <li><a href="#kitchens" data-en="Kitchens" data-fr="Cuisines">Kitchens</a></li>
+    <li><a href="#bathrooms" data-en="Bathrooms" data-fr="Salles de Bain">Bathrooms</a></li>
     <li><a href="#outdoors" data-en="Outdoors" data-fr="Extérieur">Outdoors</a></li>
     <li><a href="#ferry" data-en="The Ferry" data-fr="Le Ferry">The Ferry</a></li>
     <li><a href="#chantal" data-en="Your Host" data-fr="Votre Hôtesse">Your Host</a></li>
@@ -363,6 +368,8 @@
 <div class="mobile-menu" id="mobile-menu">
   <a href="#about" data-en="The House" data-fr="La Maison">The House</a>
   <a href="#rooms" data-en="Rooms" data-fr="Chambres">Rooms</a>
+  <a href="#kitchens" data-en="Kitchens" data-fr="Cuisines">Kitchens</a>
+  <a href="#bathrooms" data-en="Bathrooms" data-fr="Salles de Bain">Bathrooms</a>
   <a href="#outdoors" data-en="Outdoors" data-fr="Extérieur">Outdoors</a>
   <a href="#ferry" data-en="The Ferry" data-fr="Le Ferry">The Ferry</a>
   <a href="#chantal" data-en="Your Host" data-fr="Votre Hôtesse">Your Host</a>
@@ -373,14 +380,14 @@
 <section class="hero" id="top">
   <div class="hero-photos">
     <div class="hero-photo main"><img src="Backyard (2).jpeg" alt="La Maison Bleue backyard"></div>
-    <div class="hero-photo"><img src="Sightseeing (1).jpeg" alt="Statue of Liberty"></div>
+    <div class="hero-photo"><img src="Sightseeing (1).jpeg" alt="Statue of Liberty" style="object-position: center 30%;"></div>
     <div class="hero-photo"><img src="Arriving at lamaisonbleuenyc (3).jpeg" alt="Bienvenue gate"></div>
     <div class="hero-photo"><img src="1rst floor room 1 with balcony, room 2 with fire place (4).jpeg" alt="Fireplace Room"></div>
     <div class="hero-photo"><img src="2nd floor kitchen and deck behind it (3).jpeg" alt="Sunny deck"></div>
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow" data-en="115 Corson Avenue · Staten Island, New York" data-fr="115 Corson Avenue · Staten Island, New York">115 Corson Avenue · Staten Island, New York</div>
+    <div class="hero-eyebrow" data-en="Staten Island, New York" data-fr="Staten Island, New York">Staten Island, New York</div>
     <h1 class="hero-title" data-en="New York<br>with a <em>backyard.</em>" data-fr="New York<br>avec un <em>jardin.</em>">New York<br>with a <em>backyard.</em></h1>
     <p class="hero-subtitle" data-en="A beautifully restored Victorian house on a hilltop — minutes from the free ferry, and a world away from the ordinary New York experience." data-fr="Une magnifique maison victorienne restaurée sur une colline — à quelques minutes du ferry gratuit, et à des années-lumière de l'expérience new-yorkaise ordinaire.">A beautifully restored Victorian house on a hilltop — minutes from the free ferry, and a world away from the ordinary New York experience.</p>
     <a href="#contact" class="hero-cta" data-en="Contact Chantal" data-fr="Contacter Chantal">Contact Chantal</a>
@@ -401,7 +408,7 @@
     <blockquote class="about-quote" data-en='"Somewhere between a dear friend\'s beautiful home and the best-kept secret in New York City."' data-fr='"Entre la belle maison d\'un ami cher et le secret le mieux gardé de New York."'>"Somewhere between a dear friend's beautiful home and the best-kept secret in New York City."</blockquote>
     <p class="section-body" data-en="Built in the late 1800s and lovingly restored, La Maison Bleue sits quietly on a tree-lined hill in one of Staten Island's most beautiful historic districts. High ceilings. Period architectural details. Large, airy rooms that are warm in winter and cool in summer — because being on top of a hill surrounded by old-growth trees has its advantages." data-fr="Construite à la fin des années 1800 et restaurée avec amour, La Maison Bleue se dresse paisiblement sur une colline arborée, dans l'un des plus beaux quartiers historiques de Staten Island. Hauts plafonds. Détails architecturaux d'époque. Grandes chambres lumineuses, chaudes en hiver et fraîches en été.">Built in the late 1800s and lovingly restored, La Maison Bleue sits quietly on a tree-lined hill in one of Staten Island's most beautiful historic districts. High ceilings. Period architectural details. Large, airy rooms that are warm in winter and cool in summer — because being on top of a hill surrounded by old-growth trees has its advantages.</p>
     <br>
-    <p class="section-body" data-en="This is not a hotel. It is a home — and you are invited to live in it fully. Cook in the kitchen, sit in the garden, sway in the hammock. Stay a night or stay a month. Arrive whenever you like." data-fr="Ce n'est pas un hôtel. C'est une maison — et vous êtes invités à y vivre pleinement. Cuisinez, profitez du jardin, oscillez dans le hamac. Restez une nuit ou un mois. Arrivez quand vous le souhaitez.">This is not a hotel. It is a home — and you are invited to live in it fully. Cook in the kitchen, sit in the garden, sway in the hammock. Stay a night or stay a month. Arrive whenever you like.</p>
+    <p class="section-body" data-en="This is not a guesthouse in the ordinary sense. It is a home — and you are invited to live in it fully. Cook in the kitchen, sit in the garden, sway in the hammock. Minimum stay is 30 days. For shorter stays, reach out to Chantal — she is always happy to discuss. Arrive whenever you like." data-fr="Ce n'est pas une maison d'hôtes ordinaire. C'est une maison — et vous êtes invités à y vivre pleinement. Cuisinez, profitez du jardin, oscillez dans le hamac. Séjour minimum de 30 jours. Pour des séjours plus courts, contactez Chantal — elle est toujours heureuse d'en discuter. Arrivez quand vous le souhaitez.">This is not a guesthouse in the ordinary sense. It is a home — and you are invited to live in it fully. Cook in the kitchen, sit in the garden, sway in the hammock. Minimum stay is 30 days. For shorter stays, reach out to Chantal — she is always happy to discuss. Arrive whenever you like.</p>
   </div>
 </section>
 
@@ -409,7 +416,7 @@
 <div class="features">
   <div class="feature-item"><span class="feature-icon">🕐</span><div class="feature-title" data-en="Arrive Anytime" data-fr="Arrivée à Toute Heure">Arrive Anytime</div><div class="feature-desc" data-en="Flexible check-in & out.<br>No rigid schedules, ever." data-fr="Arrivée & départ flexibles.<br>Aucun horaire imposé.">Flexible check-in & out.<br>No rigid schedules, ever.</div></div>
   <div class="feature-item"><span class="feature-icon">🏡</span><div class="feature-title" data-en="Everyone Welcome" data-fr="Tout le Monde Bienvenu">Everyone Welcome</div><div class="feature-desc" data-en="Solo, couples, families,<br>groups of any size." data-fr="Seul, en couple, en famille,<br>en groupe — peu importe.">Solo, couples, families,<br>groups of any size.</div></div>
-  <div class="feature-item"><span class="feature-icon">📅</span><div class="feature-title" data-en="One Night to One Month" data-fr="Une Nuit à Un Mois">One Night to One Month</div><div class="feature-desc" data-en="Short stays, extended stays.<br>We adapt to you." data-fr="Courts séjours, longs séjours.<br>Nous nous adaptons à vous.">Short stays, extended stays.<br>We adapt to you.</div></div>
+  <div class="feature-item"><span class="feature-icon">📅</span><div class="feature-title" data-en="30-Day Minimum Stay" data-fr="Séjour Minimum 30 Jours">30-Day Minimum Stay</div><div class="feature-desc" data-en="Shorter stays on request.<br>Contact Chantal." data-fr="Séjours courts sur demande.<br>Contactez Chantal.">Shorter stays on request.<br>Contact Chantal.</div></div>
   <div class="feature-item"><span class="feature-icon">🌿</span><div class="feature-title" data-en="Fresh Hilltop Air" data-fr="Air Pur de Colline">Fresh Hilltop Air</div><div class="feature-desc" data-en="No smoking. No vaping.<br>Just clean, quiet air." data-fr="Non fumeur. Non vapotage.<br>Juste de l'air pur et calme.">No smoking. No vaping.<br>Just clean, quiet air.</div></div>
 </div>
 
@@ -511,6 +518,101 @@
   </div>
 </section>
 
+<!-- KITCHENS -->
+<section class="rooms" id="kitchens" style="background:var(--cream)">
+  <div class="rooms-header">
+    <div class="section-eyebrow" style="justify-content:center" data-en="Full Kitchen Access" data-fr="Accès Cuisine Complète">Full Kitchen Access</div>
+    <h2 class="section-title" style="text-align:center" data-en="Cook like<br>you live here" data-fr="Cuisinez comme<br>si vous étiez chez vous">Cook like<br>you live here</h2>
+    <p class="section-body" style="margin:0 auto;text-align:center" data-en="Two fully equipped kitchens — one on each floor. Everything you need to cook, eat well and feel at home." data-fr="Deux cuisines entièrement équipées — une par étage. Tout ce qu'il faut pour cuisiner, bien manger et se sentir chez soi.">Two fully equipped kitchens — one on each floor. Everything you need to cook, eat well and feel at home.</p>
+  </div>
+  <div class="rooms-grid">
+    <div class="room-card tall slideshow" data-index="0">
+      <div class="slides">
+        <img src="1rst floor extra large kitchenlivingroom.jpeg" alt="1st floor kitchen" class="slide active">
+        <img src="Kitchen (1).jpeg" alt="Kitchen detail" class="slide">
+      </div>
+      <button class="slide-btn prev">&#8249;</button>
+      <button class="slide-btn next">&#8250;</button>
+      <div class="slide-dots"></div>
+      <div class="room-card-overlay">
+        <div class="room-floor" data-en="1st Floor" data-fr="1er Étage">1st Floor</div>
+        <div class="room-name" data-en="The Grand Kitchen" data-fr="La Grande Cuisine">The Grand Kitchen</div>
+        <div class="room-desc" data-en="Extra-large kitchen with dining area, stainless appliances & butcher block island" data-fr="Grande cuisine avec coin repas, électroménager inox et îlot en bois">Extra-large kitchen with dining area, stainless appliances & butcher block island</div>
+      </div>
+    </div>
+    <div class="room-card tall slideshow" data-index="0">
+      <div class="slides">
+        <img src="2nd floor kitchen and deck behind it (1).jpeg" alt="2nd floor kitchen" class="slide active">
+        <img src="2nd floor kitchen and deck behind it (2).jpeg" alt="2nd floor kitchen 2" class="slide">
+        <img src="Kitchen (2).jpeg" alt="Kitchen detail 2" class="slide">
+      </div>
+      <button class="slide-btn prev">&#8249;</button>
+      <button class="slide-btn next">&#8250;</button>
+      <div class="slide-dots"></div>
+      <div class="room-card-overlay">
+        <div class="room-floor" data-en="2nd Floor" data-fr="2ème Étage">2nd Floor</div>
+        <div class="room-name" data-en="The Deck Kitchen" data-fr="La Cuisine Terrasse">The Deck Kitchen</div>
+        <div class="room-desc" data-en="Full kitchen with direct access to the sunny deck — morning coffee never looked so good" data-fr="Cuisine complète avec accès direct à la terrasse ensoleillée">Full kitchen with direct access to the sunny deck — morning coffee never looked so good</div>
+      </div>
+    </div>
+    <div class="room-card tall">
+      <img src="Rez de chaussée living room.jpeg" alt="Ground floor dining">
+      <div class="room-card-overlay">
+        <div class="room-floor" data-en="Ground Floor" data-fr="Rez-de-Chaussée">Ground Floor</div>
+        <div class="room-name" data-en="The Apartment Kitchen" data-fr="La Cuisine Appartement">The Apartment Kitchen</div>
+        <div class="room-desc" data-en="Independent kitchen in the garden apartment — fully equipped for extended stays" data-fr="Cuisine indépendante dans l'appartement jardin — équipée pour les longs séjours">Independent kitchen in the garden apartment — fully equipped for extended stays</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BATHROOMS -->
+<section class="rooms" id="bathrooms" style="background:var(--navy);padding-bottom:8rem">
+  <div class="rooms-header">
+    <div class="section-eyebrow" style="justify-content:center;color:var(--gold)" data-en="Bathrooms" data-fr="Salles de Bain">Bathrooms</div>
+    <h2 class="section-title light" style="text-align:center" data-en="Every bathroom<br>is a statement" data-fr="Chaque salle de bain<br>est une œuvre">Every bathroom<br>is a statement</h2>
+    <p class="section-body light" style="margin:0 auto;text-align:center" data-en="No two bathrooms are alike. Each one has been thoughtfully designed with its own character." data-fr="Aucune salle de bain ne se ressemble. Chacune a été conçue avec soin et caractère.">No two bathrooms are alike. Each one has been thoughtfully designed with its own character.</p>
+  </div>
+  <div class="rooms-grid">
+    <div class="room-card tall slideshow" data-index="0">
+      <div class="slides">
+        <img src="Bathroom (1).jpeg" alt="Rain shower bathroom" class="slide active">
+        <img src="1rst floor, rest of the bathroom.jpeg" alt="1st floor bathroom" class="slide">
+      </div>
+      <button class="slide-btn prev">&#8249;</button>
+      <button class="slide-btn next">&#8250;</button>
+      <div class="slide-dots"></div>
+      <div class="room-card-overlay">
+        <div class="room-floor" data-en="1st Floor" data-fr="1er Étage">1st Floor</div>
+        <div class="room-name" data-en="The Rain Shower" data-fr="La Douche à Pluie">The Rain Shower</div>
+        <div class="room-desc" data-en="Navy statement tiles, black rain shower head & matte black fixtures" data-fr="Carrelage bleu marine, douche à effet pluie et robinetterie noire mate">Navy statement tiles, black rain shower head & matte black fixtures</div>
+      </div>
+    </div>
+    <div class="room-card tall slideshow" data-index="0">
+      <div class="slides">
+        <img src="2nd floor bathroom.PNG" alt="2nd floor bathroom" class="slide active">
+        <img src="Bathroom (2).jpeg" alt="2nd floor bathroom 2" class="slide">
+      </div>
+      <button class="slide-btn prev">&#8249;</button>
+      <button class="slide-btn next">&#8250;</button>
+      <div class="slide-dots"></div>
+      <div class="room-card-overlay">
+        <div class="room-floor" data-en="2nd Floor" data-fr="2ème Étage">2nd Floor</div>
+        <div class="room-name" data-en="The Navy Vanity" data-fr="La Vanité Marine">The Navy Vanity</div>
+        <div class="room-desc" data-en="Dark navy vanity, marble countertop & gold sconce lighting" data-fr="Meuble vasque bleu marine, plan de travail en marbre et appliques dorées">Dark navy vanity, marble countertop & gold sconce lighting</div>
+      </div>
+    </div>
+    <div class="room-card tall">
+      <img src="Up to the 3rd floor  double room with view of Manhattan and bathroom (3).jpeg" alt="3rd floor Moroccan bathroom">
+      <div class="room-card-overlay">
+        <div class="room-floor" data-en="3rd Floor" data-fr="3ème Étage">3rd Floor</div>
+        <div class="room-name" data-en="The Moroccan Bath" data-fr="Le Bain Marocain">The Moroccan Bath</div>
+        <div class="room-desc" data-en="Handcrafted Moroccan cement tiles — a bathroom unlike any other in New York" data-fr="Carreaux de ciment marocains artisanaux — une salle de bain unique à New York">Handcrafted Moroccan cement tiles — a bathroom unlike any other in New York</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- OUTDOORS -->
 <section class="outdoors" id="outdoors">
   <div class="outdoors-images">
@@ -556,10 +658,10 @@
       </div>
     </div>
     <div class="ferry-photos">
-      <div class="ferry-photo tall"><img src="Getting there - Ferry (1).jpeg" alt="Staten Island Ferry"></div>
-      <div style="display:flex;flex-direction:column;gap:4px">
-        <div class="ferry-photo"><img src="Sightseeing (1).jpeg" alt="Statue of Liberty"></div>
-        <div class="ferry-photo"><img src="Sightseeing (3).jpeg" alt="Manhattan skyline"></div>
+      <div class="ferry-photo tall"><img src="1773966718667_image.png" alt="Staten Island Ferry with Manhattan skyline" style="object-position: center center;"></div>
+      <div style="display:flex;flex-direction:column;gap:4px;height:484px;">
+        <div style="flex:1.4;overflow:hidden;"><img src="Sightseeing (1).jpeg" alt="Statue of Liberty" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"></div>
+        <div style="flex:1;overflow:hidden;"><img src="Sightseeing (3).jpeg" alt="Manhattan skyline" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
       </div>
     </div>
   </div>
@@ -587,7 +689,7 @@
   <div>
     <div class="section-eyebrow" data-en="Your Host" data-fr="Votre Hôtesse">Your Host</div>
     <h2 class="section-title light" data-en="Meet Chantal" data-fr="Rencontrez Chantal">Meet Chantal</h2>
-    <p class="section-body light" data-en="Chantal was born in France, but New York claimed her long ago. She'll probably be the best part of your stay — whether that's a restaurant tucked away in a neighbourhood no guidebook mentions, a conversation about literature over morning coffee, or simply knowing that someone who genuinely loves this city is looking out for you." data-fr="Chantal est née en France, mais New York l'a adoptée depuis longtemps. Elle sera probablement la meilleure partie de votre séjour — que ce soit pour dénicher un restaurant caché, une conversation sur la littérature autour d'un café matinal, ou simplement savoir que quelqu'un qui aime vraiment cette ville veille sur vous.">Chantal was born in France, but New York claimed her long ago. She'll probably be the best part of your stay — whether that's a restaurant tucked away in a neighbourhood no guidebook mentions, a conversation about literature over morning coffee, or simply knowing that someone who genuinely loves this city is looking out for you.</p>
+    <p class="section-body light" data-en="Chantal is French-American and a proud New Yorker. She'll probably be the best part of your stay — whether that's a restaurant tucked away in a neighbourhood no guidebook mentions, a conversation about literature over morning coffee, or simply knowing that someone who genuinely loves this city is looking out for you." data-fr="Chantal est franco-américaine et new-yorkaise dans l'âme. Elle sera probablement la meilleure partie de votre séjour — que ce soit pour dénicher un restaurant caché, une conversation sur la littérature autour d'un café matinal, ou simplement savoir que quelqu'un qui aime vraiment cette ville veille sur vous.">Chantal is French-American and a proud New Yorker. She'll probably be the best part of your stay — whether that's a restaurant tucked away in a neighbourhood no guidebook mentions, a conversation about literature over morning coffee, or simply knowing that someone who genuinely loves this city is looking out for you.</p>
     <br>
     <p class="section-body light" data-en="She speaks French, English, and fluent New Yorker. She has explored every corner of this extraordinary city and cannot wait to share it. Ask her anything." data-fr="Elle parle français, anglais et new-yorkais couramment. Elle a exploré chaque recoin de cette ville et ne demande qu'à la partager. Posez-lui toutes vos questions.">She speaks French, English, and fluent New Yorker. She has explored every corner of this extraordinary city and cannot wait to share it. Ask her anything.</p>
     <div class="chantal-quote">
@@ -605,7 +707,7 @@
   </div>
   <div class="testimonials-grid">
     <div class="testimonial"><p class="testimonial-text">"Chantal is the kind of host you hope for but rarely find. Her knowledge of New York is extraordinary — she pointed us to places we never would have discovered on our own. An unforgettable stay."</p><div class="testimonial-author">James & Sarah T.</div><div class="testimonial-origin">London 🇬🇧</div></div>
-    <div class="testimonial"><p class="testimonial-text">"Spotlessly clean, incredibly comfortable, and so convenient. We felt completely at home from the moment we arrived. La Maison Bleue is everything a hotel isn't — and everything you actually want."</p><div class="testimonial-author">Marco R.</div><div class="testimonial-origin">Milan 🇮🇹</div></div>
+    <div class="testimonial"><p class="testimonial-text">"Spotlessly clean, incredibly comfortable, and so convenient. We felt completely at home from the moment we arrived. La Maison Bleue is everything a guesthouse should be — and everything you actually want."</p><div class="testimonial-author">Marco R.</div><div class="testimonial-origin">Milan 🇮🇹</div></div>
     <div class="testimonial"><p class="testimonial-text">"Chantal, c'est de la famille. Depuis notre premier séjour, on a une nouvelle tante à New York. On reviendra, c'est certain — on ne pourrait pas imaginer visiter la ville autrement."</p><div class="testimonial-author">Sophie & Luc M.</div><div class="testimonial-origin">Paris 🇫🇷</div></div>
   </div>
 </section>
@@ -646,22 +748,12 @@
     <div class="contact-rules">
       <span data-en="✓ Any size group welcome" data-fr="✓ Tout groupe bienvenu">✓ Any size group welcome</span>
       <span data-en="✓ Flexible dates & check-in" data-fr="✓ Dates & arrivée flexibles">✓ Flexible dates & check-in</span>
-      <span data-en="✓ Up to one month" data-fr="✓ Jusqu'à un mois">✓ Up to one month</span>
+      <span data-en="✓ 30-day minimum stay" data-fr="✓ Séjour minimum 30 jours">✓ 30-day minimum stay</span>
       <span data-en="✗ No smoking / vaping" data-fr="✗ Non fumeur / vapotage">✗ No smoking / vaping</span>
     </div>
 
     <div class="contact-buttons">
-      <!-- WhatsApp -->
-      <a href="https://wa.me/13472558485" target="_blank" rel="noopener" class="whatsapp-btn">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        <span data-en="WhatsApp Chantal" data-fr="WhatsApp Chantal">WhatsApp Chantal</span>
-      </a>
-
-      <div class="contact-or-divider">
-        <span data-en="or write to" data-fr="ou écrivez à">or write to</span>
-      </div>
-
-      <!-- Plain text email — no link, just text to copy -->
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--text-mid);margin-bottom:1rem;" data-en="Write to Chantal directly:" data-fr="Écrivez à Chantal directement :">Write to Chantal directly:</p>
       <div class="email-copy-box">
         <span class="email-address" id="email-display"></span>
         <button class="copy-btn" id="copy-email" title="Copy email">
@@ -672,14 +764,13 @@
     </div>
 
     <div class="divider" style="margin-top:3rem"><div class="divider-line"></div><div class="divider-ornament">✦</div><div class="divider-line"></div></div>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--text-muted);margin-top:1.5rem;line-height:1.7">115 Corson Avenue, Staten Island, New York<br>Walking distance to the Staten Island Ferry Terminal</p>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand">La Maison Bleue NYC<span>Hôtel à Staten Island · New York</span></div>
-  <div class="footer-center">© 2025 La Maison Bleue NYC<br><span style="font-size:0.6rem;opacity:0.5">115 Corson Ave, Staten Island, New York · <span id="footer-email"></span></span></div>
+  <div class="footer-brand">La Maison Bleue NYC<span>Guesthouse · Staten Island · New York</span></div>
+  <div class="footer-center">© 2025 La Maison Bleue NYC<br><span style="font-size:0.6rem;opacity:0.5"><span id="footer-email"></span></span></div>
   <div class="footer-right">🇫🇷 Bienvenue<br><span style="font-size:0.6rem;opacity:0.6">Français & English spoken</span></div>
 </footer>
 
