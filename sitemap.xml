@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.lamaisonbleuenyc.com/</loc>
+    <lastmod>2025-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- The House -->
+  <url>
+    <loc>https://www.lamaisonbleuenyc.com/#about</loc>
+    <lastmod>2025-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Rooms -->
+  <url>
+    <loc>https://www.lamaisonbleuenyc.com/#rooms</loc>
+    <lastmod>2025-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Kitchens -->
+  <url>
+    <loc>https://www.lamaisonbleuenyc.com/#kitchens</loc>
+    <lastmod>2025-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Bathrooms -->
+  <url>
+    <loc>https://www.lamaisonbleuenyc.com/#bathrooms</loc>
+    <lastmod>2025-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Outdoors -->
+  <url>
+    <loc>https://www.lamaisonbleuenyc.com/#outdoors</loc>
+    <lastmod>2025-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- The Ferry -->
+  <url>
+    <loc>https://www.lamaisonbleuenyc.com/#ferry</loc>
+    <lastmod>2025-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Your Host -->
+  <url>
+    <loc>https://www.lamaisonbleuenyc.com/#chantal</loc>
+    <lastmod>2025-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://www.lamaisonbleuenyc.com/#contact</loc>
+    <lastmod>2025-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+</urlset>
